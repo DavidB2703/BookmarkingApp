@@ -1,0 +1,44 @@
+﻿@model SocialBookmarkingApp.Models.Bookmark
+
+@{
+    ViewBag.Title = "Editează Bookmark";
+}
+
+<h2>Editează Bookmark</h2>
+
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Bookmarks",
+                  method: FormMethod.Post,
+                  routeValues: new { id = Model.Id }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.HiddenFor(model => model.Id) <!-- Adăugăm un câmp ascuns pentru Id -->
+        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = 3 })
+            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <label>Selectati categoria</label>
+    @Html.DropDownListFor(m => m.CategoryId,
+                new SelectList(Model.Categ, "Value", "Text"),
+                "Selectati categoria", new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.CategoryId, null, new { @class = "text-danger" })
+
+    <br />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Salvează Modificările" class="btn btn-primary" />
+        </div>
+    </div>
+}

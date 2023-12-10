@@ -1,0 +1,19 @@
+﻿@model SocialBookmarkingApp.Models.Comment
+
+@{
+    ViewData["Title"] = "Editează Comentariu";
+}
+
+<h2>Editează Comentariu</h2>
+
+<form asp-controller="Comments" asp-action="Edit" method="post">
+    <div class="form-group">
+        <label asp-for="Content">Text Comentariu:</label>
+        <textarea asp-for="Content" class="form-control"></textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+
+    <input type="hidden" asp-for="Id" />
+
+    <button type="submit" class="btn btn-primary">Salvează modificările</button>
+</form>
