@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7sSr//srp3vu6/JuUbEQnS2FXZiEUVFTgOi8n4HMsrY=",
+  "Hash": "aTew7Eixmxvv6wbM8XSUvF3jeOu0Hc/lmjQf4gmu5Uo=",
   "Source": "SocialBookmarkingApp",
   "BasePath": "_content/SocialBookmarkingApp",
   "Mode": "Default",
@@ -2091,6 +2091,23 @@
       "OriginalItemSpec": "wwwroot/lib/jquery/LICENSE.txt"
     },
     {
+      "Identity": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/08692151-784b-4fa7-929b-2e44ca887809.png",
+      "SourceId": "SocialBookmarkingApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/",
+      "BasePath": "_content/SocialBookmarkingApp",
+      "RelativePath": "uploads/08692151-784b-4fa7-929b-2e44ca887809.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/08692151-784b-4fa7-929b-2e44ca887809.png"
+    },
+    {
       "Identity": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/0ae46b90-857e-4646-a634-a15a901831ce.png",
       "SourceId": "SocialBookmarkingApp",
       "SourceType": "Discovered",
@@ -2142,6 +2159,23 @@
       "OriginalItemSpec": "wwwroot/uploads/2bd41725-ebd7-4493-90e5-d230f9897e88.png"
     },
     {
+      "Identity": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/4363898d-2834-4062-9fb0-5813e6e9bc0b.png",
+      "SourceId": "SocialBookmarkingApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/",
+      "BasePath": "_content/SocialBookmarkingApp",
+      "RelativePath": "uploads/4363898d-2834-4062-9fb0-5813e6e9bc0b.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/4363898d-2834-4062-9fb0-5813e6e9bc0b.png"
+    },
+    {
       "Identity": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/4413c040-f21b-4bde-85fa-a9ca02334310.png",
       "SourceId": "SocialBookmarkingApp",
       "SourceType": "Discovered",
@@ -2157,6 +2191,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/uploads/4413c040-f21b-4bde-85fa-a9ca02334310.png"
+    },
+    {
+      "Identity": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/46ad2883-33f7-48ac-a51e-80a05c635f91.jpeg",
+      "SourceId": "SocialBookmarkingApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/",
+      "BasePath": "_content/SocialBookmarkingApp",
+      "RelativePath": "uploads/46ad2883-33f7-48ac-a51e-80a05c635f91.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/46ad2883-33f7-48ac-a51e-80a05c635f91.jpeg"
+    },
+    {
+      "Identity": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/786753be-1a5d-4b04-916b-1a8fcd61363a.jpg",
+      "SourceId": "SocialBookmarkingApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/",
+      "BasePath": "_content/SocialBookmarkingApp",
+      "RelativePath": "uploads/786753be-1a5d-4b04-916b-1a8fcd61363a.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/786753be-1a5d-4b04-916b-1a8fcd61363a.jpg"
     },
     {
       "Identity": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/9ee8a4f8-8128-43b2-a419-d175e60dcc8f.png",
@@ -2193,6 +2261,23 @@
       "OriginalItemSpec": "wwwroot/uploads/9ef1b4b4-a62d-4fb1-acb9-d2ff2eeef285.png"
     },
     {
+      "Identity": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/e47fdf86-4d03-45cf-9a51-c738be75d369.jpg",
+      "SourceId": "SocialBookmarkingApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/",
+      "BasePath": "_content/SocialBookmarkingApp",
+      "RelativePath": "uploads/e47fdf86-4d03-45cf-9a51-c738be75d369.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/e47fdf86-4d03-45cf-9a51-c738be75d369.jpg"
+    },
+    {
       "Identity": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/e9bcf7a9-d985-47d2-b2cc-10c95cbea8ef.png",
       "SourceId": "SocialBookmarkingApp",
       "SourceType": "Discovered",
@@ -2208,6 +2293,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/uploads/e9bcf7a9-d985-47d2-b2cc-10c95cbea8ef.png"
+    },
+    {
+      "Identity": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/fe610bd5-fb43-4c06-8f02-84e36acbd2d7.jpg",
+      "SourceId": "SocialBookmarkingApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/",
+      "BasePath": "_content/SocialBookmarkingApp",
+      "RelativePath": "uploads/fe610bd5-fb43-4c06-8f02-84e36acbd2d7.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/fe610bd5-fb43-4c06-8f02-84e36acbd2d7.jpg"
     }
   ]
 }
