@@ -1,3 +1,3 @@
 ﻿<Project>
-  <Import Project="..\buildMultiTargeting\SocialBookmarkingApp.props" />
+  <Import Project="../buildMultiTargeting/SocialBookmarkingApp.props" />
 </Project>

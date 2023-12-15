@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\david\\source\\repos\\SocialBookmarkingApp\\SocialBookmarkingApp\\SocialBookmarkingApp.csproj": {}
+    "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/SocialBookmarkingApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\david\\source\\repos\\SocialBookmarkingApp\\SocialBookmarkingApp\\SocialBookmarkingApp.csproj": {
+    "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/SocialBookmarkingApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\david\\source\\repos\\SocialBookmarkingApp\\SocialBookmarkingApp\\SocialBookmarkingApp.csproj",
+        "projectUniqueName": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/SocialBookmarkingApp.csproj",
         "projectName": "SocialBookmarkingApp",
-        "projectPath": "C:\\Users\\david\\source\\repos\\SocialBookmarkingApp\\SocialBookmarkingApp\\SocialBookmarkingApp.csproj",
-        "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\david\\source\\repos\\SocialBookmarkingApp\\SocialBookmarkingApp\\obj\\",
+        "projectPath": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/SocialBookmarkingApp.csproj",
+        "packagesPath": "/Users/mariodeaconescu/.nuget/packages/",
+        "outputPath": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/mariodeaconescu/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -52,6 +50,12 @@
               "target": "Package",
               "version": "[6.0.23, )"
             },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.14, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[6.0.23, )"
@@ -69,6 +73,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[6.0.16, )"
+            },
+            "Pomelo.EntityFrameworkCore.MySql": {
+              "target": "Package",
+              "version": "[7.0.0, )"
             }
           },
           "imports": [
@@ -90,7 +98,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.202/RuntimeIdentifierGraph.json"
         }
       }
     }
