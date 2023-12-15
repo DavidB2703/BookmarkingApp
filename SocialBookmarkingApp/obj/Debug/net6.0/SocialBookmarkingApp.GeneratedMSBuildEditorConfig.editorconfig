@@ -40,14 +40,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQm9va21hcmtzL0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/Views/Bookmarks/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQm9va21hcmtzL0luZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/Views/Bookmarks/New.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQm9va21hcmtzL05ldy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/Views/Bookmarks/Show.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQm9va21hcmtzL1Nob3cuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -103,6 +95,18 @@ build_metadata.AdditionalFiles.CssScope =
 [/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/Views/Bookmarks/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQm9va21hcmtzL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-lpd18vy5mc
+
+[/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/Views/Bookmarks/New.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQm9va21hcmtzL05ldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-qof3vh4e16
+
+[/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/Views/Bookmarks/_BookmarkCard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQm9va21hcmtzL19Cb29rbWFya0NhcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-9a0vp6jauk
 
 [/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s

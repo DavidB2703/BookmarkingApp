@@ -2,15 +2,29 @@
 
 <br />
 
+<div class="bookmark-container">
+
 @foreach( SocialBookmarkingApp.Models.Bookmark bookmark in ViewBag.bookmarks)
 {
-    <a href="/Bookmarks/Show/@bookmark.Id" style="text-decoration: none; color: #333; transition: background-color 0.3s; display: block; margin: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 8px; background-color: #f5f5f5; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);" onmouseover="this.style.backgroundColor='#e0e0e0'" onmouseout="this.style.backgroundColor='#f5f5f5'">
-        @Html.Partial("BookmarkInfo", bookmark)
-    </a>
+        @Html.Partial("_BookmarkCard", bookmark)
 }
+
+</div>
 
 <!-- Buton de adaugare al bookmark-urilor-->
 <a href="/Bookmarks/New" class="btn btn-primary">Add Bookmark</a>
 <a href="/Categories/New" class="btn btn-primary">Add Category</a>
 
 <br />
+
+@section Scripts {
+    <script>
+        var container = document.querySelector('.bookmark-container');
+        var msnry = new Masonry(container, {
+            // options
+            itemSelector: '.bookmark',
+        });
+        console.log(container, msnry);
+    </script>
+}
+```

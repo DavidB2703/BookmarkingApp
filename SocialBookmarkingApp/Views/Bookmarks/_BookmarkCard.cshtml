@@ -1,0 +1,14 @@
+@model Bookmark
+
+<div class="card bookmark border-0">
+    <img class="card-img-top" src="@Model.MediaUrl" alt="Bookmark Image">
+    <div class="card-img-overlay">
+        <p class="bookmark-title">@Model.Title</p>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title d-flex flex-row align-items-center gap-2">
+            <img src="@Model.User.ProfilePicture" alt="@Model.User.Email"/>
+            <span class="ms-2">@Model.User.UserName</span>
+        </h5>
+    </div>
+</div>

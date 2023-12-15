@@ -1,0 +1,23 @@
+.bookmark {
+    @media screen and (min-width: 768px) {
+        width: calc(50% - 40px);
+    }
+    @media screen and (min-width: 992px) {
+        width: calc(33.33% - 40px);
+    }
+    @media screen and (min-width: 1200px) {
+        width: calc(25% - 40px);
+    }
+    margin: 10px;
+}
+
+.bookmark-title{
+    color: white;
+    mix-blend-mode: difference;
+}
+
+.card-title>img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}

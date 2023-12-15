@@ -1,17 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Build.Framework;
 
-namespace SocialBookmarkingApp.Models;
+namespace SocialBookmarkingApp.Models; 
 
-public enum MediaType {
-    LocalImage,
-    LocalVideo,
-    EmbeddedImage,
-    EmbeddedVideo,
-}
-
-public class Bookmark {
+public class BookmarkCreate {
     public int Id { get; set; }
 
     [Required] public string? Title { get; set; }
@@ -20,11 +13,9 @@ public class Bookmark {
 
     [Required] public string? Link { get; set; }
 
-    [Required] public MediaType? MediaType { get; set; }
+    public IFormFile? Media { get; set; }
 
-    [Required] public string? MediaUrl { get; set; }
-    
-    [Required] public DateTime? Date { get; set; }
+    public string? MediaUrl { get; set; }
 
     public int? CategoryId { get; set; }
 

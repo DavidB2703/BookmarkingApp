@@ -1,3 +1,82 @@
+/* _content/SocialBookmarkingApp/Views/Bookmarks/Index.cshtml.rz.scp.css */
+/* _content/SocialBookmarkingApp/Views/Bookmarks/New.cshtml.rz.scp.css */
+.drop-container[b-qof3vh4e16]{
+    position: relative;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    border: 2px dashed #555;
+    color: #444;
+    cursor: pointer;
+    transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+
+.drop-container:hover[b-qof3vh4e16] {
+    background: #eee;
+    border-color: #111;
+}
+
+.drop-title[b-qof3vh4e16] {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.upload-icon[b-qof3vh4e16]{
+    font-size: 50px;
+}
+
+input[type=file][b-qof3vh4e16]::file-selector-button {
+    margin-right: 20px;
+    border: none;
+    background: #084cdf;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+}
+
+input[type=file][b-qof3vh4e16]::file-selector-button:hover {
+    background: #0d45a5;
+}
+
+input[type=file][b-qof3vh4e16] {
+    width: 350px;
+    max-width: 100%;
+    color: #444;
+    padding: 5px;
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #555;
+}
+/* _content/SocialBookmarkingApp/Views/Bookmarks/_BookmarkCard.cshtml.rz.scp.css */
+.bookmark[b-9a0vp6jauk] {
+    @media screen and (min-width: 768px) {
+        width: calc(50% - 40px);[b-9a0vp6jauk]
+    }
+    @media screen and (min-width: 992px) {
+        width: calc(33.33% - 40px);[b-9a0vp6jauk]
+    }
+    @media screen and (min-width: 1200px) {
+        width: calc(25% - 40px);[b-9a0vp6jauk]
+    }
+    margin: 10px;
+}
+
+.bookmark-title[b-9a0vp6jauk]{
+    color: white;
+    mix-blend-mode: difference;
+}
+
+.card-title>img[b-9a0vp6jauk]{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
 /* _content/SocialBookmarkingApp/Views/Shared/_Layout.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */

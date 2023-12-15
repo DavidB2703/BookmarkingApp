@@ -245,6 +245,34 @@
       "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
     },
     {
+      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/0ae46b90-857e-4646-a634-a15a901831ce.png",
+      "PackagePath": "staticwebassets/uploads/0ae46b90-857e-4646-a634-a15a901831ce.png"
+    },
+    {
+      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/2b514afb-8e88-473d-842b-b691abd189fc.png",
+      "PackagePath": "staticwebassets/uploads/2b514afb-8e88-473d-842b-b691abd189fc.png"
+    },
+    {
+      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/2bd41725-ebd7-4493-90e5-d230f9897e88.png",
+      "PackagePath": "staticwebassets/uploads/2bd41725-ebd7-4493-90e5-d230f9897e88.png"
+    },
+    {
+      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/4413c040-f21b-4bde-85fa-a9ca02334310.png",
+      "PackagePath": "staticwebassets/uploads/4413c040-f21b-4bde-85fa-a9ca02334310.png"
+    },
+    {
+      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/9ee8a4f8-8128-43b2-a419-d175e60dcc8f.png",
+      "PackagePath": "staticwebassets/uploads/9ee8a4f8-8128-43b2-a419-d175e60dcc8f.png"
+    },
+    {
+      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/9ef1b4b4-a62d-4fb1-acb9-d2ff2eeef285.png",
+      "PackagePath": "staticwebassets/uploads/9ef1b4b4-a62d-4fb1-acb9-d2ff2eeef285.png"
+    },
+    {
+      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/e9bcf7a9-d985-47d2-b2cc-10c95cbea8ef.png",
+      "PackagePath": "staticwebassets/uploads/e9bcf7a9-d985-47d2-b2cc-10c95cbea8ef.png"
+    },
+    {
       "Id": "obj/Debug/net6.0/staticwebassets/msbuild.SocialBookmarkingApp.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

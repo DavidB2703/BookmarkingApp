@@ -1,39 +1,57 @@
-﻿@model SocialBookmarkingApp.Models.Bookmark
+﻿@model SocialBookmarkingApp.Models.BookmarkCreate
 @{
-    ViewBag.Title = "Adaugă Bookmark";
+    ViewBag.Title = "Add Bookmark";
 }
 
-<h2>Adaugă un nou Bookmark</h2>
+<h2>Add Bookmark</h2>
 
-@using (Html.BeginForm("New", "Bookmarks", FormMethod.Post, new { @class = "form-horizontal" }))
-{
+@using (Html.BeginForm("New", "Bookmarks", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" })) {
     @Html.AntiForgeryToken()
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+    <div class="d-flex flex-row align-items-center justify-content-center gap-5 p-3">
+
+        <div class="d-flex flex-column flex-shrink-1" style="{min-width: 0}">
+            <label for="media" class="drop-container">
+                <i class="bi bi-image upload-icon"></i>
+                <span class="drop-title">Upload Media</span>
+                or
+                <input id="media" asp-for="Media" accept="image/*, video/*">
+            </label>
+
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = 3 })
-            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        <div class="d-flex flex-column flex-grow-1">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = 3 })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <label>Selectati categoria</label>
+            @Html.DropDownListFor(m => m.CategoryId, new SelectList(Model.Categ, "Value", "Text"),
+                "Selectati categoria", new { @class = "form-control" })
+
         </div>
+
     </div>
-
-    <label>Selectati categoria</label>
-    @Html.DropDownListFor(m => m.CategoryId, new SelectList(Model.Categ, "Value", "Text"),
-    "Selectati categoria", new { @class = "form-control" })
-
-    <br>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Adaugă Bookmark" class="btn btn-primary" />
+            <input type="submit" value="Adaugă Bookmark" class="btn btn-primary"/>
         </div>
     </div>
 }
+
+<script>
+
+</script>
