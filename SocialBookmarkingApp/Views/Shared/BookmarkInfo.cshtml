@@ -1,0 +1,29 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">@Model.Title</h3>
+    </div>
+    <div class="card-body">
+        <p class="card-text">@Model.Description</p>
+        <p class="card-text">Categorie: @Model.Category.CategoryName</p>
+
+        <form method="post" action="/Bookmarks/Delete/@Model.Id">
+            <button class="btn btn-danger" type="submit">Sterge bookmark</button>
+        </form>
+
+        <form action="/Bookmarks/Edit/@Model.Id">
+            <button class="btn btn-success" type="submit">Editeaza bookmark</button>
+        </form>
+
+    </div>
+</div>
+
+<br />

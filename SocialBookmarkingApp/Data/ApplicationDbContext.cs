@@ -4,7 +4,7 @@ using SocialBookmarkingApp.Models;
 
 namespace SocialBookmarkingApp.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -14,7 +14,7 @@ namespace SocialBookmarkingApp.Data
         public DbSet<Bookmark> Bookmarks { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 
     }
-
 }

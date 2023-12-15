@@ -4,59 +4,9 @@
 
 @foreach( SocialBookmarkingApp.Models.Bookmark bookmark in ViewBag.bookmarks)
 {
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">@bookmark.Title</h3>
-        </div>
-        <div class="card-body">
-            <p class="card-text">@bookmark.Description</p>
-            <p class="card-text">Categorie: @bookmark.Category.CategoryName</p>
-
-            <form method="post" action="/Bookmarks/Delete/@bookmark.Id">
-                <button class="btn btn-danger" type="submit">Sterge bookmark</button>
-            </form>
-            
-            <form action="/Bookmarks/Edit/@bookmark.Id">
-                <button class="btn btn-success" type="submit">Editeaza bookmark</button>
-            </form>
-
-            <form method="post" action="/Bookmarks/Show/@bookmark.Id">
-
-                <div class="card-body">
-
-                    <input type="hidden" name="BookmarkId" value="@bookmark.Id" />
-
-                    <label>Continut comentariu</label>
-                    <br />
-
-                    <textarea class="form-control" name="Content"></textarea>
-
-                    @Html.ValidationMessage("Content", null, new { @class = "text-danger"})
-
-                    <br /><br />
-                        @foreach (SocialBookmarkingApp.Models.Comment comment in @bookmark.Comments)
-                        {
-                            <div class="card">
-                                <div class="card-body">
-                                    <p class="card-text">@comment.Content</p>
-                                <button class="btn btn-danger" asp-controller="Comments" asp-action="Delete" asp-route-id="@comment.Id"> Sterge comentariu </button>
-                                <a class="btn btn-danger" href="/Comments/Edit/@comment.Id"> Editeaza comentariu </a>
-
-                            </div>
-                            </div>
-                        }
-                    
-
-                    <button class="btn btn-success " type="submit">Adauga comentariul</button>
-
-                </div>
-
-            </form>
-
-        </div>
-    </div>
-
-    <br />
+    <a href="/Bookmarks/Show/@bookmark.Id" style="text-decoration: none; color: #333; transition: background-color 0.3s; display: block; margin: 10px; padding: 10px; border: 1px solid #ccc; border-radius: 8px; background-color: #f5f5f5; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);" onmouseover="this.style.backgroundColor='#e0e0e0'" onmouseout="this.style.backgroundColor='#f5f5f5'">
+        @Html.Partial("BookmarkInfo", bookmark)
+    </a>
 }
 
 <!-- Buton de adaugare al bookmark-urilor-->

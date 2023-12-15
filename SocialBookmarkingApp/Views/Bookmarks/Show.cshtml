@@ -4,4 +4,102 @@
 @{
 }
 @model SocialBookmarkingApp.Models.Bookmark
-<>Bau cica bau bau</>
+<!-- afisarea unui singur bookmark, cu tot cu comentarii-->
+<br />
+@Html.Partial("BookmarkInfo", Model)
+
+<hr></hr>
+
+<form method="post" action="/Bookmarks/Show/@Model.Id">
+
+    <div class="card-body">
+
+        <input type="hidden" name="BookmarkId" value="@Model.Id" />
+
+        <label>Continut comentariu</label>
+        <br />
+
+        <textarea class="form-control" name="Content"></textarea>
+
+        @Html.ValidationMessage("Content", null, new { @class = "text-danger"})
+
+        <br />
+        <button class="btn btn-success " type="submit">Adauga comentariul</button>
+
+    </div>
+
+</form>
+
+<hr />
+
+<form method="post" action="/Bookmarks/ShowReviews/@Model.Id">
+
+    <div class="card-body">
+        <label for="Rating">Rating:</label>
+        <select class="form-control" id="Rating" name="Rating" required>
+            <option value="" disabled selected>Select Rating</option>
+            <option value="1">One Star</option>
+            <option value="2">Two Stars</option>
+            <option value="3">Three Stars</option>
+            <option value="4">Four Stars</option>
+            <option value="5">Five Stars</option>
+        </select>
+    </div>
+
+    <div class="card-body">
+
+        <input type="hidden" name="BookmarkId" value="@Model.Id" />
+        <label>Continut review</label>
+        <br />
+        <textarea class="form-control" name="Content"></textarea>
+        @Html.ValidationMessage("Content", null, new { @class = "text-danger"})
+        <br />
+        <button class="btn btn-success " type="submit">Adauga review</button>
+
+    </div>
+
+</form>
+
+<br />
+
+<hr />
+
+<br/>
+
+<h2>Comentarii</h2>
+<br></br>
+@foreach (SocialBookmarkingApp.Models.Comment comment in @Model.Comments)
+{
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">@comment.Content</p>
+            <form action="/Comments/Delete/@comment.Id" method="post" style="float: right;">
+                <button type="submit" class="btn btn-danger">Sterge comentariu</button>
+            </form>
+            <a class="btn btn-danger" href="/Comments/Edit/@comment.Id"> Editeaza comentariu </a>
+
+        </div>
+    </div>
+}
+
+<br />
+<hr></hr>
+<br />
+<h2> Review-uri </h2>
+<br></br>
+
+@foreach (SocialBookmarkingApp.Models.Review review in @Model.Reviews)
+{
+    <div class="card">
+        <div class="card-body">
+            <p class="card-text">@review.Content</p>
+            <p class="card-text">@review.Rating</p>
+            <form action="/Reviews/Delete/@review.Id" method="post" style="float: right;">
+                <button type="submit" class="btn btn-danger">Sterge review-ul</button>
+            </form>
+            <a class="btn btn-danger" href="/Reviews/Edit/@review.Id"> Editeaza review-ul </a>
+
+        </div>
+    </div>
+}
+     

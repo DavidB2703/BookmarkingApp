@@ -13,10 +13,14 @@ namespace SocialBookmarkingApp.Models
 
         public virtual Category? Category { get; set; }
 
+        public virtual ApplicationUser? User { get; set; }
+
         [NotMapped]
         public IEnumerable<SelectListItem>? Categ { get; set; }
 
         public virtual ICollection<Comment>? Comments { get; set; }
+
+        public virtual ICollection<Review>? Reviews { get; set; }
 
     }
 }

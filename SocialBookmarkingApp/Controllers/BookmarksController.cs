@@ -11,18 +11,26 @@ namespace SocialBookmarkingApp.Controllers
     public class BookmarksController : Controller
     {
         private readonly ApplicationDbContext db;
-        public BookmarksController(ApplicationDbContext context)
+
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+
+        public BookmarksController(ApplicationDbContext context, UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
         {
             db = context;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
+        [Authorize(Roles = "User,Admin")]
         public IActionResult Index()
         {
             //Luam tabelul Bookmarks din baza de date
-            ViewBag.bookmarks = db.Bookmarks.Include(b => b.Category).Include(b => b.Comments);
+            ViewBag.bookmarks = db.Bookmarks.Include(b => b.Category).Include(b => b.Comments);//.Include(b=>b.Reviews);
             //Returnam view-ul Index cu lista de bookmarks
             return View();
         }
         //adaugam o noua metoda care va adauga returna view -ul New
+        [Authorize(Roles = "User,Admin")]
         public IActionResult New()
         {
 
@@ -32,6 +40,8 @@ namespace SocialBookmarkingApp.Controllers
             //Returnam view-ul New cu un obiect de tip Bookmark
             return View(bookmark);
         }
+
+        [Authorize(Roles = "User,Admin")]
         [HttpPost]
         public ActionResult New(Bookmark bookmark)
         {
@@ -50,6 +60,7 @@ namespace SocialBookmarkingApp.Controllers
         }
 
         //adaugam o metoda care sterge un bookmark
+        [Authorize(Roles = "User,Admin")]
         [HttpPost]
         public IActionResult Delete(int? id)
         {
@@ -73,6 +84,7 @@ namespace SocialBookmarkingApp.Controllers
             return RedirectToAction("Index");
         }
         //adaugam o metoda care editeaza un bookmark
+        [Authorize(Roles = "User,Admin")]
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -87,7 +99,7 @@ namespace SocialBookmarkingApp.Controllers
 
         }
 
-
+        [Authorize(Roles = "User,Admin")]
         [HttpPost]
         public IActionResult Edit(int id, Bookmark requestBookmark)
         {
@@ -112,27 +124,27 @@ namespace SocialBookmarkingApp.Controllers
             }
         }
 
-
+        [Authorize(Roles = "User,Admin")]
         public IActionResult Show(int id)
         {
             Bookmark bookmark = db.Bookmarks.Include("Category")
-                                        .Include("User")
                                         .Include("Comments")
-                                        .Include("Comments.User")
+                                        .Include("Reviews")
                                         .Where(art => art.Id == id)
                                         .First();
             return View(bookmark);
         }
 
         [HttpPost]
+        [Authorize(Roles = "User,Admin")]
         public IActionResult Show([FromForm] Comment comment)
         {
-            comment.Date = DateTime.Now;
             if (ModelState.IsValid)
             {
                 db.Comments.Add(comment);
                 db.SaveChanges();
-                return Redirect("/Bookmarks/Index");
+                return RedirectToAction("Show", "Bookmarks", new { id = comment.BookmarkId });
+              
             }
 
             else
@@ -143,11 +155,34 @@ namespace SocialBookmarkingApp.Controllers
                                          .Include("Comments.User")
                                          .Where(art => art.Id == comment.BookmarkId)
                                          .First();
-                
+
                 return View();
             }
         }
 
+        [Authorize(Roles = "User,Admin")]
+        public IActionResult ShowReviews([FromForm] Review review)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Reviews.Add(review);
+                db.SaveChanges();
+                return RedirectToAction("Show", "Bookmarks", new { id = review.BookmarkId });
+            }
+            else
+            {
+                Bookmark bookmark = db.Bookmarks.Include("Category")
+                                         .Include("User")
+                                         .Include("Comments")
+                                         .Include("Comments.User")
+                                         .Where(art => art.Id == review.BookmarkId)
+                                         .First();
+
+                return View();
+            }
+        }
+
+        [Authorize(Roles = "User,Admin")]
         public IEnumerable<SelectListItem> GetAllCategories()
         {
             // generam o lista de tipul SelectListItem fara elemente

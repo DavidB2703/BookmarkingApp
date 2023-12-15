@@ -20,7 +20,7 @@ namespace SocialBookmarkingApp.Controllers
 
             db.Comments.Remove(comm);
             db.SaveChanges();
-            return Redirect("/Bookmarks/Index/");
+            return Redirect("/Bookmarks/Show/" + comm.BookmarkId);
         }
 
         // In acest moment vom implementa editarea intr-o pagina View separata
@@ -44,10 +44,10 @@ namespace SocialBookmarkingApp.Controllers
             if (ModelState.IsValid)
             {
                 comm.Content = requestComment.Content;
-
+                
                 db.SaveChanges();
 
-                return Redirect("/Bookmarks/Index/");
+                return Redirect("/Bookmarks/Show/" + comm.BookmarkId);
             }
             else
             {

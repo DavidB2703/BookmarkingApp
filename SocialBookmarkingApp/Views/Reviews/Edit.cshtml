@@ -1,0 +1,30 @@
+﻿@model Review
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">Edit Review</h2>
+
+                @using (Html.BeginForm("Edit", "Reviews", FormMethod.Post, new { @class = "mt-4" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Content, new { @class = "form-label" })
+                        @Html.TextAreaFor(model => model.Content, new { @class = "form-control", rows = 4 })
+                    </div>
+
+                    <div class="mb-3">
+                        @Html.LabelFor(model => model.Rating, new { @class = "form-label" })
+                        @Html.DropDownListFor(model => model.Rating, Enum.GetValues(typeof(rating)).Cast<rating>().Select(
+                    x => new SelectListItem { Text = Enum.GetName(typeof(rating), x), Value = x.ToString() }),
+                    new { @class = "form-select" })
+                    </div>
+
+                    @Html.HiddenFor(model => model.Id)
+                    @Html.HiddenFor(model => model.BookmarkId)
+
+                    <button type="submit" class="btn btn-primary">Save</button>
+                }
+            </div>
+        </div>
+    </div>
