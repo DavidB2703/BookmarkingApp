@@ -38,7 +38,6 @@ namespace SocialBookmarkingApp.Controllers
             Review rev = db.Reviews.Find(id);
             if (ModelState.IsValid)
             {
-                rev.Content = requestReview.Content;
                 rev.Rating = requestReview.Rating;
                 db.SaveChanges();
 

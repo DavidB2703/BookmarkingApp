@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
+    <Folder Include="wwwroot\lib\star-rating\" />
     <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 

@@ -2,7 +2,12 @@
 
 <a href="/Bookmarks/Show/@Model.Id">
     <div class="card bookmark border-0">
-        <img class="card-img-top" src="@Model.MediaUrl" alt="Bookmark Image">
+        @if (Model.MediaType is MediaType.LocalImage or MediaType.EmbeddedImage) {
+            <img class="card-img-top" src="@Model.MediaUrl" alt="Bookmark Image">
+        }
+        else if (Model.MediaType is MediaType.LocalVideo or MediaType.EmbeddedVideo) {
+            <video class="card-img-top" src="@Model.MediaUrl" alt="Bookmark Video" autoplay muted loop></video>
+        }
         <div class="card-img-overlay">
             <p class="bookmark-title">@Model.Title</p>
         </div>

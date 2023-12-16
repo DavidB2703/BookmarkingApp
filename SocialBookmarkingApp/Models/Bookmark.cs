@@ -37,4 +37,9 @@ public class Bookmark {
     public virtual ICollection<Comment>? Comments { get; set; }
 
     public virtual ICollection<Review>? Reviews { get; set; }
+    
+    public int AverageRating => Reviews?.Count > 0 ? Reviews.Sum(r => r.Rating) / Reviews.Count : 0;
+    
+    [NotMapped]
+    public IEnumerable<Bookmark> RelatedBookmarks { get; set; } = null!;
 }

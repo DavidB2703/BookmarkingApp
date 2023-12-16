@@ -1,105 +1,148 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using SocialBookmarkingApp.Controllers
 @model SocialBookmarkingApp.Models.Bookmark
-<!-- afisarea unui singur bookmark, cu tot cu comentarii-->
-<br />
-@Html.Partial("BookmarkInfo", Model)
 
-<hr></hr>
 
-<form method="post" action="/Bookmarks/Show/@Model.Id">
-
-    <div class="card-body">
-
-        <input type="hidden" name="BookmarkId" value="@Model.Id" />
-
-        <label>Continut comentariu</label>
-        <br />
-
-        <textarea class="form-control" name="Content"></textarea>
-
-        @Html.ValidationMessage("Content", null, new { @class = "text-danger"})
-
-        <br />
-        <button class="btn btn-success " type="submit">Adauga comentariul</button>
-
+<div class="d-flex bookmark-container">
+    <div class="flex-shrink-1 flex-grow-1 media-overlay overflow-hidden" style="min-width: 0">
+        @if (Model.MediaType is MediaType.LocalImage or MediaType.EmbeddedImage) {
+            <img src="@Model.MediaUrl" alt="Bookmark Image" class="w-100">
+        }
+        else if (Model.MediaType is MediaType.LocalVideo or MediaType.EmbeddedVideo) {
+            <video src="@Model.MediaUrl" alt="Bookmark Video" class="w-100" autoplay controls muted loop></video>
+        }
     </div>
-
-</form>
-
-<hr />
-
-<form method="post" action="/Bookmarks/ShowReviews/@Model.Id">
-
-    <div class="card-body">
-        <label for="Rating">Rating:</label>
-        <select class="form-control" id="Rating" name="Rating" required>
-            <option value="" disabled selected>Select Rating</option>
-            <option value="1">One Star</option>
-            <option value="2">Two Stars</option>
-            <option value="3">Three Stars</option>
-            <option value="4">Four Stars</option>
-            <option value="5">Five Stars</option>
-        </select>
-    </div>
-
-    <div class="card-body">
-
-        <input type="hidden" name="BookmarkId" value="@Model.Id" />
-        <label>Continut review</label>
-        <br />
-        <textarea class="form-control" name="Content"></textarea>
-        @Html.ValidationMessage("Content", null, new { @class = "text-danger"})
-        <br />
-        <button class="btn btn-success " type="submit">Adauga review</button>
-
-    </div>
-
-</form>
-
-<br />
-
-<hr />
-
-<br/>
-
-<h2>Comentarii</h2>
-<br></br>
-@foreach (SocialBookmarkingApp.Models.Comment comment in @Model.Comments)
-{
-    <div class="card">
-        <div class="card-body">
-            <p class="card-text">@comment.Content</p>
-            <form action="/Comments/Delete/@comment.Id" method="post" style="float: right;">
-                <button type="submit" class="btn btn-danger">Sterge comentariu</button>
+    <div class="flex-grow-1 d-flex flex-column p-4">
+        <h3>
+            @Model.Title
+        </h3>
+        <p>
+            @Model.Description
+        </p>
+        <div class="d-flex flex-row align-items-center mb-2">
+            <form method="post" action="/Bookmarks/Review/@Model.Id">
+                <select class="star-rating" disabled>
+                    @{
+                        if (Model.AverageRating == 0) {
+                            <option value="" disabled selected></option>
+                        }
+                        for (int i = 5; i > 0; i--) {
+                            if (Model.AverageRating == i) {
+                                <option value="@i" selected>@i</option>
+                            }
+                            else {
+                                <option value="@i">@i</option>
+                            }
+                        }
+                    }
+                </select>
             </form>
-            <a class="btn btn-danger" href="/Comments/Edit/@comment.Id"> Editeaza comentariu </a>
+            <span class="ms-2">@(Model.Reviews?.Count ?? 0) Reviews</span>
+        </div>
+        <div class="d-flex flex-row align-items-center p-2 mb-3">
+            <img src="@Model.User.ProfilePicture" alt="@Model.User.Email" class="me-2" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%">
+            <div class="d-flex flex-column">
+                <span class="me-2 author-name">@Model.User.UserName</span>
+                <span class="author-bookmark">@(Model.User.Bookmarks?.Count ?? 0) bookmarks</span>
+            </div>
+            <div class="ml-auto d-flex flex-row align-items-center gap-2">
+                Your rating:
+                <select class="star-rating-user" onchange="changeRating(this)">
+                    @{
+                        var rating = Model.Reviews?.FirstOrDefault(r => r.User?.UserName == User.Identity?.Name)?.Rating ?? 0;
+                        if (rating == 0) {
+                            <option value="" disabled selected></option>
+                        }
+                        for (int i = 5; i > 0; i--) {
+                            if (rating == i) {
+                                <option value="@i" selected>@i</option>
+                            }
+                            else {
+                                <option value="@i">@i</option>
+                            }
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="d-flex flex-column gap-2 flex-grow-1">
+            <h4 class="fw-bold">
+                @(Model.Comments?.Count ?? 0) Comments
+            </h4>
+            <div>
+                @foreach (SocialBookmarkingApp.Models.Comment comment in @Model.Comments ?? new List<SocialBookmarkingApp.Models.Comment>()) {
+                    <div class="d-flex flex-row">
+                        <img src="@comment.User.ProfilePicture" alt="@comment.User.Email" class="me-2" style="width: 30px; height: 30px; object-fit: cover; border-radius: 50%">
+                        <p>
+                            <span class="fw-bold">@comment.User.UserName</span>: @comment.Content
+                        </p>
+                        @if (User.Identity?.IsAuthenticated ?? false && User.Identity.Name == comment.User.UserName) {
+                            <form action="/Bookmarks/DeleteComment/@comment.Id" method="post" class="ml-auto">
+                                <button type="submit" class="btn btn-outline-danger" style="border: none;">
+                                    <i class="bi bi-trash3-fill"></i>
+                                </button>
+                            </form>
+                        }
+                    </div>
+                }
+            </div>
+            @using (Html.BeginForm("NewComment", "Bookmarks", FormMethod.Post, new { @class = "form-horizontal mt-auto" })) {
+                @Html.AntiForgeryToken()
 
+                <input type="hidden" name="BookmarkId" value="@Model.Id"/>
+
+                <div class="input-group">
+                    @Html.TextArea("Content", null, new { @class = "form-control comment-bar", @placeholder = "Add a comment", @rows = 1, @style = "resize: none;" })
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="submit">
+                            <i class="bi bi-send-fill"></i>
+                        </button>
+                    </div>
+                </div>
+
+                @Html.ValidationMessage("Content", null, new { @class = "text-danger" })
+            }
         </div>
     </div>
-}
+</div>
 
-<br />
-<hr></hr>
-<br />
-<h2> Review-uri </h2>
-<br></br>
+<h2 class="mt-5 mb-3">
+    More like this
+</h2>
 
-@foreach (SocialBookmarkingApp.Models.Review review in @Model.Reviews)
+<div class="related-bookmark-container">
+
+@foreach( var bookmark in @Model.RelatedBookmarks)
 {
-    <div class="card">
-        <div class="card-body">
-            <p class="card-text">@review.Content</p>
-            <p class="card-text">@review.Rating</p>
-            <form action="/Reviews/Delete/@review.Id" method="post" style="float: right;">
-                <button type="submit" class="btn btn-danger">Sterge review-ul</button>
-            </form>
-            <a class="btn btn-danger" href="/Reviews/Edit/@review.Id"> Editeaza review-ul </a>
-
-        </div>
-    </div>
+    @await Html.PartialAsync("_BookmarkCard", bookmark)
 }
-     
+
+</div>
+
+@section Scripts {
+    <script>
+        const stars = new StarRating('.star-rating', {
+            tooltip: false,
+            });
+        const userStars = new StarRating('.star-rating-user', {
+            tooltip: false,
+            });
+        const container = document.querySelector('.related-bookmark-container');
+                const msnry = new Masonry(container, {
+                    // options
+                    itemSelector: '.bookmark',
+                });
+        async function changeRating(select) {
+            
+            const rating = select.value;
+            const bookmarkId = @Model.Id;
+            const url = `/Bookmarks/Review/${bookmarkId}?rating=${rating}`;
+           
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+            }
+    </script>
+}

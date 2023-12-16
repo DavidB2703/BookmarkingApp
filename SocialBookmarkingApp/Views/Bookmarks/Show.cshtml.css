@@ -1,0 +1,29 @@
+.bookmark-container{
+    @media screen and (min-width: 768px){
+        flex-direction: row;
+    }
+    @media screen and (max-width: 768px){
+        flex-direction: column;
+    }
+}
+
+.media-overlay{
+    border-radius: 20px;
+    @media screen and (min-width: 768px){
+        max-width: 50%;
+    }
+}
+
+.media-overlay>img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.author-name{
+    font-weight: bold;
+}
+
+.comment-bar{
+    height: 100px;
+}
