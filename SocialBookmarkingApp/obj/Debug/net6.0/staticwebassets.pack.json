@@ -1,315 +1,263 @@
 {
   "Files": [
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/obj/Debug/net6.0/scopedcss/projectbundle/SocialBookmarkingApp.bundle.scp.css",
-      "PackagePath": "staticwebassets/SocialBookmarkingApp.bundle.scp.css"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\SocialBookmarkingApp.bundle.scp.css",
+      "PackagePath": "staticwebassets\\SocialBookmarkingApp.bundle.scp.css"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/css/site.css",
-      "PackagePath": "staticwebassets/css/site.css"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/favicon.ico",
-      "PackagePath": "staticwebassets/favicon.ico"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/js/site.js",
-      "PackagePath": "staticwebassets/js/site.js"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/LICENSE",
-      "PackagePath": "staticwebassets/lib/bootstrap"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.css"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.css.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.min.css"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.min.css.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.css"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.css.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.min.css"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.css"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.css.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.min.css"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.css"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.css.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.min.css"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.min.css.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.css"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.css.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.min.css"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.js"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.js.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.js"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.js.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.min.js"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.min.js.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/js/bootstrap.js",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.js"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.js.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.min.js"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map",
-      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.min.js.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt",
-      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/LICENSE.txt"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
-      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
-      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/jquery-validation/LICENSE.md",
-      "PackagePath": "staticwebassets/lib/jquery-validation/LICENSE.md"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/jquery-validation/dist/additional-methods.js",
-      "PackagePath": "staticwebassets/lib/jquery-validation/dist/additional-methods.js"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/jquery-validation/dist/additional-methods.min.js",
-      "PackagePath": "staticwebassets/lib/jquery-validation/dist/additional-methods.min.js"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/jquery-validation/dist/jquery.validate.js",
-      "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.js"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
-      "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.min.js"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/jquery/LICENSE.txt",
-      "PackagePath": "staticwebassets/lib/jquery/LICENSE.txt"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/jquery/dist/jquery.js",
-      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.js"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/jquery/dist/jquery.min.js",
-      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.js"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/lib/jquery/dist/jquery.min.map",
-      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/08692151-784b-4fa7-929b-2e44ca887809.png",
-      "PackagePath": "staticwebassets/uploads/08692151-784b-4fa7-929b-2e44ca887809.png"
-    },
-    {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/0ae46b90-857e-4646-a634-a15a901831ce.png",
-      "PackagePath": "staticwebassets/uploads/0ae46b90-857e-4646-a634-a15a901831ce.png"
-    },
-    {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/2b514afb-8e88-473d-842b-b691abd189fc.png",
-      "PackagePath": "staticwebassets/uploads/2b514afb-8e88-473d-842b-b691abd189fc.png"
-    },
-    {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/2bd41725-ebd7-4493-90e5-d230f9897e88.png",
-      "PackagePath": "staticwebassets/uploads/2bd41725-ebd7-4493-90e5-d230f9897e88.png"
-    },
-    {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/4363898d-2834-4062-9fb0-5813e6e9bc0b.png",
-      "PackagePath": "staticwebassets/uploads/4363898d-2834-4062-9fb0-5813e6e9bc0b.png"
-    },
-    {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/4413c040-f21b-4bde-85fa-a9ca02334310.png",
-      "PackagePath": "staticwebassets/uploads/4413c040-f21b-4bde-85fa-a9ca02334310.png"
-    },
-    {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/46ad2883-33f7-48ac-a51e-80a05c635f91.jpeg",
-      "PackagePath": "staticwebassets/uploads/46ad2883-33f7-48ac-a51e-80a05c635f91.jpeg"
-    },
-    {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/786753be-1a5d-4b04-916b-1a8fcd61363a.jpg",
-      "PackagePath": "staticwebassets/uploads/786753be-1a5d-4b04-916b-1a8fcd61363a.jpg"
-    },
-    {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/9ee8a4f8-8128-43b2-a419-d175e60dcc8f.png",
-      "PackagePath": "staticwebassets/uploads/9ee8a4f8-8128-43b2-a419-d175e60dcc8f.png"
-    },
-    {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/9ef1b4b4-a62d-4fb1-acb9-d2ff2eeef285.png",
-      "PackagePath": "staticwebassets/uploads/9ef1b4b4-a62d-4fb1-acb9-d2ff2eeef285.png"
-    },
-    {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/e47fdf86-4d03-45cf-9a51-c738be75d369.jpg",
-      "PackagePath": "staticwebassets/uploads/e47fdf86-4d03-45cf-9a51-c738be75d369.jpg"
-    },
-    {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/e9bcf7a9-d985-47d2-b2cc-10c95cbea8ef.png",
-      "PackagePath": "staticwebassets/uploads/e9bcf7a9-d985-47d2-b2cc-10c95cbea8ef.png"
-    },
-    {
-      "Id": "/Users/mariodeaconescu/University/Dezvoltarea Aplicatiilor Web/BookmarkingApp/SocialBookmarkingApp/wwwroot/uploads/fe610bd5-fb43-4c06-8f02-84e36acbd2d7.jpg",
-      "PackagePath": "staticwebassets/uploads/fe610bd5-fb43-4c06-8f02-84e36acbd2d7.jpg"
-    },
-    {
-      "Id": "obj/Debug/net6.0/staticwebassets/msbuild.SocialBookmarkingApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.SocialBookmarkingApp.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj/Debug/net6.0/staticwebassets/msbuild.build.SocialBookmarkingApp.props",
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.SocialBookmarkingApp.props",
       "PackagePath": "build\\SocialBookmarkingApp.props"
     },
     {
-      "Id": "obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.SocialBookmarkingApp.props",
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.SocialBookmarkingApp.props",
       "PackagePath": "buildMultiTargeting\\SocialBookmarkingApp.props"
     },
     {
-      "Id": "obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.SocialBookmarkingApp.props",
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.SocialBookmarkingApp.props",
       "PackagePath": "buildTransitive\\SocialBookmarkingApp.props"
     }
   ],
