@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+  
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -39,7 +43,11 @@
                         <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Index">Bookmarks</a>
                     </li>
 
-
+                   <li class="nav-item">
+                       <!--accesam bookmark-urile salvate, apeland functia save, avand ca parametru id-ul userului curent->
+                        <!--nu stiu daca e bine asa, dar nu stiu cum sa fac altfel-->
+                      <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Saved">Saved</a>
+                   </li>
                 </ul>
                 <partial name="_LoginPartial"/>
             </div>

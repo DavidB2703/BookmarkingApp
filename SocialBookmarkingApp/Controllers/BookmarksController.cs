@@ -304,4 +304,30 @@ public class BookmarksController : Controller {
             .ToListAsync();
         return relatedBookmarks;
     }
+
+    [Authorize(Roles = "User,Admin")]
+    public IActionResult Saved()
+    {
+      var user = _userManager.GetUserAsync(HttpContext.User).Result;
+      return View(user);
+    }
+
+    [Authorize(Roles = "User,Admin")]
+    public IActionResult Save(int id)
+    {
+        //adaugam bookmark-ul in lista de bookmark-uri salvate
+        
+        var userId = _userManager.GetUserId(HttpContext.User);
+        //includem saved bookmarks la user
+
+        var user = _context.Users.Include(u => u.SavedBookmarks).First(u => u.Id == userId);
+        var bookmark = _bookmarks.Find(id);
+        user.SavedBookmarks.Add(bookmark);
+
+        _context.SaveChanges();
+        return RedirectToAction("Index");
+
+
+
+    }
 }

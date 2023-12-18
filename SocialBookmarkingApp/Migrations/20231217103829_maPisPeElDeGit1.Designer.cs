@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SocialBookmarkingApp.Data;
 
@@ -10,14 +11,30 @@ using SocialBookmarkingApp.Data;
 namespace SocialBookmarkingApp.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231217103829_maPisPeElDeGit1")]
+    partial class maPisPeElDeGit1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.23")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
+
+            modelBuilder.Entity("ApplicationUserBookmark", b =>
+                {
+                    b.Property<int>("SavedBookmarksId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SavedById")
+                        .HasColumnType("varchar(255)");
+
+                    b.HasKey("SavedBookmarksId", "SavedById");
+
+                    b.HasIndex("SavedById");
+
+                    b.ToTable("ApplicationUserBookmark");
+                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -333,6 +350,21 @@ namespace SocialBookmarkingApp.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Reviews");
+                });
+
+            modelBuilder.Entity("ApplicationUserBookmark", b =>
+                {
+                    b.HasOne("SocialBookmarkingApp.Models.Bookmark", null)
+                        .WithMany()
+                        .HasForeignKey("SavedBookmarksId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SocialBookmarkingApp.Models.ApplicationUser", null)
+                        .WithMany()
+                        .HasForeignKey("SavedById")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -16,5 +16,15 @@ namespace SocialBookmarkingApp.Data
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Review> Reviews { get; set; }
 
+        //rezolvam problema cu saved bookmarks din cl
+        
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Entity<ApplicationUser>()
+                .HasMany(u => u.Bookmarks)
+                .WithOne(b => b.User);
+        }
+
     }
 }

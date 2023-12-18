@@ -245,6 +245,170 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\star-rating"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\README.md",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\README.md"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\demo\\styles.css",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\demo\\styles.css"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\demo\\styles.min.css",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\demo\\styles.min.css"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\dist\\star-rating.cjs.js",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\dist\\star-rating.cjs.js"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\dist\\star-rating.css",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\dist\\star-rating.css"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\dist\\star-rating.esm.js",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\dist\\star-rating.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\dist\\star-rating.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\dist\\star-rating.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\dist\\star-rating.js",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\dist\\star-rating.js"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\dist\\star-rating.min.css",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\dist\\star-rating.min.css"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\dist\\star-rating.min.js",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\dist\\star-rating.min.js"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\gulpfile.js",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\gulpfile.js"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\img\\star-empty.svg",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\img\\star-empty.svg"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\img\\star-full.svg",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\img\\star-full.svg"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\index.html",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\package-lock.json",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\package-lock.json"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\package.json",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\package.json"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\postcss.config.js",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\postcss.config.js"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\rollup.config.js",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\rollup.config.js"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\src\\defaults.js",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\src\\defaults.js"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\src\\helpers.js",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\src\\helpers.js"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\src\\index.css",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\src\\index.css"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\src\\index.js",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\src\\index.js"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\lib\\star-rating\\src\\widget.js",
+      "PackagePath": "staticwebassets\\lib\\star-rating\\src\\widget.js"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\08692151-784b-4fa7-929b-2e44ca887809.png",
+      "PackagePath": "staticwebassets\\uploads\\08692151-784b-4fa7-929b-2e44ca887809.png"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\0ae46b90-857e-4646-a634-a15a901831ce.png",
+      "PackagePath": "staticwebassets\\uploads\\0ae46b90-857e-4646-a634-a15a901831ce.png"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\2010c945-b6e7-4407-aeaf-7310415887ad.png",
+      "PackagePath": "staticwebassets\\uploads\\2010c945-b6e7-4407-aeaf-7310415887ad.png"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\2b514afb-8e88-473d-842b-b691abd189fc.png",
+      "PackagePath": "staticwebassets\\uploads\\2b514afb-8e88-473d-842b-b691abd189fc.png"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\2b8baf37-d292-42ea-9343-30c3e0d62cfa.mp4",
+      "PackagePath": "staticwebassets\\uploads\\2b8baf37-d292-42ea-9343-30c3e0d62cfa.mp4"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\2bd41725-ebd7-4493-90e5-d230f9897e88.png",
+      "PackagePath": "staticwebassets\\uploads\\2bd41725-ebd7-4493-90e5-d230f9897e88.png"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\4363898d-2834-4062-9fb0-5813e6e9bc0b.png",
+      "PackagePath": "staticwebassets\\uploads\\4363898d-2834-4062-9fb0-5813e6e9bc0b.png"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\4413c040-f21b-4bde-85fa-a9ca02334310.png",
+      "PackagePath": "staticwebassets\\uploads\\4413c040-f21b-4bde-85fa-a9ca02334310.png"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\46ad2883-33f7-48ac-a51e-80a05c635f91.jpeg",
+      "PackagePath": "staticwebassets\\uploads\\46ad2883-33f7-48ac-a51e-80a05c635f91.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\6feb70a8-c405-4c95-b2df-004812509101.jpg",
+      "PackagePath": "staticwebassets\\uploads\\6feb70a8-c405-4c95-b2df-004812509101.jpg"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\786753be-1a5d-4b04-916b-1a8fcd61363a.jpg",
+      "PackagePath": "staticwebassets\\uploads\\786753be-1a5d-4b04-916b-1a8fcd61363a.jpg"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\8eb01364-acf9-4e4e-bd50-f56ece7855b5.png",
+      "PackagePath": "staticwebassets\\uploads\\8eb01364-acf9-4e4e-bd50-f56ece7855b5.png"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\9ee8a4f8-8128-43b2-a419-d175e60dcc8f.png",
+      "PackagePath": "staticwebassets\\uploads\\9ee8a4f8-8128-43b2-a419-d175e60dcc8f.png"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\9ef1b4b4-a62d-4fb1-acb9-d2ff2eeef285.png",
+      "PackagePath": "staticwebassets\\uploads\\9ef1b4b4-a62d-4fb1-acb9-d2ff2eeef285.png"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\e47fdf86-4d03-45cf-9a51-c738be75d369.jpg",
+      "PackagePath": "staticwebassets\\uploads\\e47fdf86-4d03-45cf-9a51-c738be75d369.jpg"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\e9bcf7a9-d985-47d2-b2cc-10c95cbea8ef.png",
+      "PackagePath": "staticwebassets\\uploads\\e9bcf7a9-d985-47d2-b2cc-10c95cbea8ef.png"
+    },
+    {
+      "Id": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\fe610bd5-fb43-4c06-8f02-84e36acbd2d7.jpg",
+      "PackagePath": "staticwebassets\\uploads\\fe610bd5-fb43-4c06-8f02-84e36acbd2d7.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.SocialBookmarkingApp.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

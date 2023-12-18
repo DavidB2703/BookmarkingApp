@@ -1,0 +1,11 @@
+﻿@model ApplicationUser
+
+<h1>Aici ar trb sa apara bookmark-urile salvate pentru userul @Model.Email</h1>
+
+@{
+    ViewData["Title"] = "Saved";
+}
+@foreach( SocialBookmarkingApp.Models.Bookmark bookmark in Model.SavedBookmarks)
+{
+        @Html.Partial("_BookmarkCard", bookmark)
+})
