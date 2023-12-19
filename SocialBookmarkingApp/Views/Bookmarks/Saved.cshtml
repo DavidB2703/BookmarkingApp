@@ -1,11 +1,33 @@
 ﻿@model ApplicationUser
 
-<h1>Aici ar trb sa apara bookmark-urile salvate pentru userul @Model.Email</h1>
+@* <h1>Aici ar trb sa apara bookmark-urile salvate pentru userul @Model.Email</h1> *@
 
 @{
     ViewData["Title"] = "Saved";
 }
-@foreach( SocialBookmarkingApp.Models.Bookmark bookmark in Model.SavedBookmarks)
+@foreach( var category in Model.Categories)
 {
+    <h1>@category.CategoryName</h1>
+    <div class="bookmark-container-@category.Id">
+    @foreach( var bookmark in category.Bookmarks)
+    {
         @Html.Partial("_BookmarkCard", bookmark)
-})
+    }
+    </div>
+}
+
+@section Scripts {
+    <script>
+        $(() => {
+        const ids = @Json.Serialize(Model.Categories.Select(c => c.Id));
+        ids.forEach(id => {
+            const container = document.querySelector(`.bookmark-container-${id}`);
+            const msnry = new Masonry(container, {
+                // options
+                itemSelector: '.bookmark',
+            });
+            // console.log(container, msnry);
+        });
+        });
+    </script>
+}

@@ -120,17 +120,7 @@
 
 @section Scripts {
     <script>
-        const stars = new StarRating('.star-rating', {
-            tooltip: false,
-            });
-        const userStars = new StarRating('.star-rating-user', {
-            tooltip: false,
-            });
-        const container = document.querySelector('.related-bookmark-container');
-                const msnry = new Masonry(container, {
-                    // options
-                    itemSelector: '.bookmark',
-                });
+    
         async function changeRating(select) {
             
             const rating = select.value;
@@ -144,5 +134,18 @@
                 },
             });
             }
+    $(() => {
+        const stars = new StarRating('.star-rating', {
+            tooltip: false,
+            });
+        const userStars = new StarRating('.star-rating-user', {
+            tooltip: false,
+            });
+        const container = document.querySelector('.related-bookmark-container');
+                const msnry = new Masonry(container, {
+                    // options
+                    itemSelector: '.bookmark',
+                });
+            });
     </script>
 }

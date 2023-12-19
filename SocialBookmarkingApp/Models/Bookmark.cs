@@ -26,15 +26,11 @@ public class Bookmark {
     
     [Required] public DateTime? Date { get; set; }
 
-    public int? CategoryId { get; set; }
-
-    public virtual Category? Category { get; set; }
-
     public virtual ApplicationUser? User { get; set; }
 
-    public virtual ICollection<ApplicationUser>? SavedBy { get; set; }
+    // public virtual ICollection<ApplicationUser>? SavedBy { get; set; }
 
-    [NotMapped] public IEnumerable<SelectListItem>? Categ { get; set; }
+    // [NotMapped] public IEnumerable<SelectListItem>? Categ { get; set; }
 
     public virtual ICollection<Comment>? Comments { get; set; }
 
@@ -44,4 +40,6 @@ public class Bookmark {
     
     [NotMapped]
     public IEnumerable<Bookmark> RelatedBookmarks { get; set; } = null!;
+    
+    public virtual ICollection<Category> Categories { get; set; }
 }

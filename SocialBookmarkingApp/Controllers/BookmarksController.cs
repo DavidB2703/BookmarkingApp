@@ -31,7 +31,6 @@ public class BookmarksController : Controller {
     public async Task<IActionResult> Index() {
         //Luam tabelul Bookmarks din baza de date
         var bookmarks = _bookmarks
-            .Include(b => b.Category)
             .Include(b => b.User)
             .Include(b => b.Comments)
             .Include(b => b.Reviews)
@@ -49,7 +48,7 @@ public class BookmarksController : Controller {
     public IActionResult New() {
         var bookmark = new BookmarkCreate();
         //Luam toate categoriile din baza de date
-        bookmark.Categ = GetAllCategories();
+        // bookmark.Categ = GetAllCategories();
         //Returnam view-ul New cu un obiect de tip Bookmark
         return View(bookmark);
     }
@@ -64,7 +63,6 @@ public class BookmarksController : Controller {
                 Title = bookmark.Title,
                 Description = bookmark.Description,
                 Link = bookmark.Link,
-                CategoryId = bookmark.CategoryId,
                 Date = DateTime.UtcNow,
                 User = user
             };
@@ -151,7 +149,7 @@ public class BookmarksController : Controller {
             .Where(art => art.Id == id)
             .First();
 
-        bookmark.Categ = GetAllCategories();
+        // bookmark.Categ = GetAllCategories();
         return View(bookmark);
     }
 
@@ -163,7 +161,6 @@ public class BookmarksController : Controller {
 
         if (ModelState.IsValid) {
             bookmark.Title = requestBookmark.Title;
-            bookmark.CategoryId = requestBookmark.CategoryId;
             bookmark.Description = requestBookmark.Description;
             TempData["message"] = "Articolul a fost modificat";
             TempData["messageType"] = "alert-success";
@@ -171,7 +168,7 @@ public class BookmarksController : Controller {
             return RedirectToAction("Index");
         }
         else {
-            requestBookmark.Categ = GetAllCategories();
+            // requestBookmark.Categ = GetAllCategories();
             return View(requestBookmark);
         }
     }
@@ -179,7 +176,6 @@ public class BookmarksController : Controller {
     [Authorize(Roles = "User,Admin")]
     public async Task<IActionResult> Show(int id) {
         var bookmark = _bookmarks
-            .Include("Category")
             .Include(b => b.User)
             .ThenInclude(u => u.Bookmarks)
             .Include("Comments")
@@ -297,7 +293,6 @@ public class BookmarksController : Controller {
     [NonAction]
     public async Task<List<Bookmark>> GetRelatedBookmarks(Bookmark bookmark) {
         var relatedBookmarks = await _bookmarks
-            .Include(b => b.Category)
             .Include(b => b.User)
             .Include(b => b.Comments)
             .Where(b => b.User == bookmark.User && b.Id != bookmark.Id)
@@ -306,25 +301,30 @@ public class BookmarksController : Controller {
     }
 
     [Authorize(Roles = "User,Admin")]
-    public IActionResult Saved()
-    {
-      var user = _userManager.GetUserAsync(HttpContext.User).Result;
+    public async Task<IActionResult> Saved() {
+        var identity = await _userManager.GetUserAsync(HttpContext.User);
+        var user = _context.Users
+            .Include(u => u.Categories)
+            .ThenInclude(c => c.Bookmarks)
+            .ThenInclude(b => b.User)
+            .First(u => u.Id == identity.Id);
+            // .Include(u => u.SavedBookmarks)
       return View(user);
     }
 
     [Authorize(Roles = "User,Admin")]
     public IActionResult Save(int id)
     {
-        //adaugam bookmark-ul in lista de bookmark-uri salvate
-        
-        var userId = _userManager.GetUserId(HttpContext.User);
-        //includem saved bookmarks la user
-
-        var user = _context.Users.Include(u => u.SavedBookmarks).First(u => u.Id == userId);
-        var bookmark = _bookmarks.Find(id);
-        user.SavedBookmarks.Add(bookmark);
-
-        _context.SaveChanges();
+        // //adaugam bookmark-ul in lista de bookmark-uri salvate
+        //
+        // var userId = _userManager.GetUserId(HttpContext.User);
+        // //includem saved bookmarks la user
+        //
+        // var user = _context.Users.Include(u => u.SavedBookmarks).First(u => u.Id == userId);
+        // var bookmark = _bookmarks.Find(id);
+        // user.SavedBookmarks.Add(bookmark);
+        //
+        // _context.SaveChanges();
         return RedirectToAction("Index");
 
 

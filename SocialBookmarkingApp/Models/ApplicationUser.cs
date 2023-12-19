@@ -12,7 +12,7 @@ public class ApplicationUser : IdentityUser {
     public virtual ICollection<Category>? Categories { get; set; }
     public virtual ICollection<Comment>? Comments { get; set; }
     public virtual ICollection<Review>? Reviews { get; set; }
-    public virtual ICollection<Bookmark>? SavedBookmarks { get; set; }
+    // public virtual ICollection<Bookmark>? SavedBookmarks { get; set; }
 
     public string FullName => $"{FirstName} {LastName}";
 

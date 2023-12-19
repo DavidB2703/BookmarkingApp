@@ -19,19 +19,19 @@ namespace SocialBookmarkingApp.Data.Migrations
                 .HasAnnotation("ProductVersion", "6.0.23")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("ApplicationUserBookmark", b =>
+            modelBuilder.Entity("BookmarkCategory", b =>
                 {
-                    b.Property<int>("SavedBookmarksId")
+                    b.Property<int>("BookmarksId")
                         .HasColumnType("int");
 
-                    b.Property<string>("SavedById")
-                        .HasColumnType("varchar(255)");
+                    b.Property<int>("CategoriesId")
+                        .HasColumnType("int");
 
-                    b.HasKey("SavedBookmarksId", "SavedById");
+                    b.HasKey("BookmarksId", "CategoriesId");
 
-                    b.HasIndex("SavedById");
+                    b.HasIndex("CategoriesId");
 
-                    b.ToTable("ApplicationUserBookmark");
+                    b.ToTable("BookmarkCategory");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -245,9 +245,6 @@ namespace SocialBookmarkingApp.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("CategoryId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("Date")
                         .HasColumnType("datetime(6)");
 
@@ -270,8 +267,6 @@ namespace SocialBookmarkingApp.Data.Migrations
                         .HasColumnType("varchar(255)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.HasIndex("UserId");
 
@@ -350,17 +345,17 @@ namespace SocialBookmarkingApp.Data.Migrations
                     b.ToTable("Reviews");
                 });
 
-            modelBuilder.Entity("ApplicationUserBookmark", b =>
+            modelBuilder.Entity("BookmarkCategory", b =>
                 {
                     b.HasOne("SocialBookmarkingApp.Models.Bookmark", null)
                         .WithMany()
-                        .HasForeignKey("SavedBookmarksId")
+                        .HasForeignKey("BookmarksId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SocialBookmarkingApp.Models.ApplicationUser", null)
+                    b.HasOne("SocialBookmarkingApp.Models.Category", null)
                         .WithMany()
-                        .HasForeignKey("SavedById")
+                        .HasForeignKey("CategoriesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -418,15 +413,9 @@ namespace SocialBookmarkingApp.Data.Migrations
 
             modelBuilder.Entity("SocialBookmarkingApp.Models.Bookmark", b =>
                 {
-                    b.HasOne("SocialBookmarkingApp.Models.Category", "Category")
-                        .WithMany("Bookmarks")
-                        .HasForeignKey("CategoryId");
-
                     b.HasOne("SocialBookmarkingApp.Models.ApplicationUser", "User")
                         .WithMany("Bookmarks")
                         .HasForeignKey("UserId");
-
-                    b.Navigation("Category");
 
                     b.Navigation("User");
                 });
@@ -488,11 +477,6 @@ namespace SocialBookmarkingApp.Data.Migrations
                     b.Navigation("Comments");
 
                     b.Navigation("Reviews");
-                });
-
-            modelBuilder.Entity("SocialBookmarkingApp.Models.Category", b =>
-                {
-                    b.Navigation("Bookmarks");
                 });
 #pragma warning restore 612, 618
         }

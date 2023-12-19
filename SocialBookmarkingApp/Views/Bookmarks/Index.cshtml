@@ -19,12 +19,13 @@
 
 @section Scripts {
     <script>
+    $(() => {
         const container = document.querySelector('.bookmark-container');
         const msnry = new Masonry(container, {
             // options
             itemSelector: '.bookmark',
         });
         console.log(container, msnry);
+        });
     </script>
 }
-```
