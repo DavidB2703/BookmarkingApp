@@ -1,31 +1,92 @@
-﻿<h1> Bookmarks </h1>
+﻿<div class="d-flex flex-row align-items-center p-1 justify-content-between flex-wrap">
+    <h1> Bookmarks </h1>
 
-<br />
+    <ul class="nav nav-pills ml-auto">
+        <li class="nav-item">
+            <a class="nav-link @(ViewBag.ListView ? "" : "active")" aria-current="page" href="/@(string.IsNullOrEmpty(ViewBag.Search) ? "" : $"?search={ViewBag.Search}")">
+                <i class="bi bi-view-list"></i>
+                Classic View
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewBag.ListView ? "active" : "")" href="/?listView=true@(string.IsNullOrEmpty(ViewBag.Search) ? "" : $"&search={ViewBag.Search}")">
+                <i class="bi bi-list-task"></i>
+                List View
+            </a>
+        </li>
+    </ul>
+</div>
 
-<div class="bookmark-container">
+<div>
+    @if (ViewBag.ListView) {
+        foreach (SocialBookmarkingApp.Models.Bookmark bookmark in ViewBag.bookmarks) {
+            @Html.Partial("_BookmarkList", new BookmarkViewModel {
+                Bookmark = bookmark,
+            })
+        }
+        <nav aria-label="Pagination">
+            <ul class="pagination">
+                <li class="page-item @(ViewBag.Page == 1 ? "disabled" : "")">
+                    <a class="page-link" href="/?listView=true&pageSize=@ViewBag.PageSize&page=@Math.Max(1, ViewBag.Page - 1)@(string.IsNullOrEmpty(ViewBag.Search) ? "" : $"&search={ViewBag.Search}")">Previous</a>
+                </li>
+                @{
+                    int page = ViewBag.page;
+                    int startPage = page - 2;
+                    if (startPage < 1) {
+                        startPage = 1;
+                    }
+                    int endPage = startPage + 4;
+                    if(endPage > ViewBag.PageCount) {
+                        endPage = ViewBag.PageCount;
+                    }
+                    for (int i = startPage; i <= endPage; i++) {
+                        if (i == page) {
+                            <li class="page-item active">
+                                <a class="page-link" href="/?listView=true&pageSize=@ViewBag.PageSize&page=@i@(string.IsNullOrEmpty(ViewBag.Search) ? "" : $"&search={ViewBag.Search}")">@i</a>
+                            </li>
+                        }
+                        else {
+                            <li class="page-item">
+                                <a class="page-link" href="/?listView=true&pageSize=@ViewBag.PageSize&page=@i@(string.IsNullOrEmpty(ViewBag.Search) ? "" : $"&search={ViewBag.Search}")">@i</a>
+                            </li>
+                        }
+                    }
+                }
+                <li class="page-item @(ViewBag.Page == ViewBag.PageCount ? "disabled" : "")">
+                    <a class="page-link" href="/?listView=true&pageSize=@ViewBag.PageSize&page=@Math.Min(ViewBag.PageCount, ViewBag.Page + 1)@(string.IsNullOrEmpty(ViewBag.Search) ? "" : $"&search={ViewBag.Search}")">Next</a>
+                </li>
+            </ul>
+        </nav>
+    }
+    else {
+        <div class="bookmark-container">
 
-@foreach( SocialBookmarkingApp.Models.Bookmark bookmark in ViewBag.bookmarks)
-{
-        @Html.Partial("_BookmarkCard", bookmark)
-}
+            @foreach (SocialBookmarkingApp.Models.Bookmark bookmark in ViewBag.bookmarks) {
+                @Html.Partial("_BookmarkCard", new BookmarkViewModel {
+                    Bookmark = bookmark,
+                })
+            }
+        </div>
+    }
 
 </div>
 
-<!-- Buton de adaugare al bookmark-urilor-->
-<a href="/Bookmarks/New" class="btn btn-primary">Add Bookmark</a>
-<a href="/Categories/New" class="btn btn-primary">Add Category</a>
-
-<br />
 
 @section Scripts {
     <script>
     $(() => {
-        const container = document.querySelector('.bookmark-container');
-        const msnry = new Masonry(container, {
-            // options
-            itemSelector: '.bookmark',
-        });
-        console.log(container, msnry);
+        console.log(@ViewBag.PageCount)
+        @if (ViewBag.ListView) { }
+        else {
+            <text>
+            const container = document.querySelector('.bookmark-container');
+            const msnry = new Masonry(container, {
+                // options
+                itemSelector: '.bookmark',
+            });
+            console.log(container, msnry);
+            </text>
+        }
         });
     </script>
 }

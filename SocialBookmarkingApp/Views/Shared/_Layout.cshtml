@@ -2,6 +2,8 @@
 
 }
 
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,8 +41,23 @@
                         <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Saved">Saved</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="New">Create Bookmark</a>
+                        <a class="nav-link text-dark text-nowrap" asp-area="" asp-controller="Bookmarks" asp-action="New">Create Bookmark</a>
                     </li>
+                    <div class="container-fluid">
+                        <form class="d-flex" role="search" method="get" action="/">
+                            @if(HttpContextAccessor.HttpContext.Request.Query["search"].ToString() != "")
+                            {
+                                <input type="search" name="search" value="@HttpContextAccessor.HttpContext.Request.Query["search"].ToString()" class="form-control me-2 flex-shrink-1" placeholder="Search Bookmarks" aria-label="Search">
+                            }
+                            else {
+                                <input class="form-control me-2 flex-shrink-1" type="search" placeholder="Search Bookmarks" aria-label="Search" name="search">
+                            }
+                            <button class="btn btn-outline-primary" type="submit">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </form>
+                    </div>
+
                 </ul>
                 <partial name="_LoginPartial"/>
             </div>
@@ -65,5 +82,6 @@
 <script src="~/js/site.js" asp-append-version="true"></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 @await RenderSectionAsync("Scripts", required: false)
+@Html.RenderPartialSectionScripts()
 </body>
 </html>

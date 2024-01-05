@@ -1,0 +1,20 @@
+.bookmark-list-item{
+    @media screen and (max-width: 768px) {
+        flex-wrap: wrap;
+    }
+}
+.bookmark-list-item-media{
+    @media screen and (min-width: 768px){
+        max-width: 30%;
+    }
+}
+.bookmark-list-item-media>a>img{
+    @media screen and (min-width: 768px){
+        max-height: 170px;
+    }
+}
+.bookmark-list-item-media>a>video{
+    @media screen and (min-width: 768px){
+        max-height: 170px;
+    }
+}

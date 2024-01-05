@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -27,18 +28,69 @@ public class BookmarksController : Controller {
         _roleManager = roleManager;
     }
 
+    [NonAction]
+    private IEnumerable<Bookmark> SearchBookmarks(IEnumerable<Bookmark> bookmarks, string search, IEnumerable<string> categories) {
+        if (string.IsNullOrEmpty(search)) {
+            return bookmarks;
+        }
+
+        // Turn search string into array of keywords
+        var keywords = search.Split(' ');
+        // Turn keywords into regex patterns that match misspelled words
+        var patterns = keywords.Select(k => {
+                return k.Aggregate("", (current, c) => current + $".*[{c}].*");
+            }
+        ).ToArray();
+        // Search for keywords in title, description, and categories owned by user
+        foreach (var b in bookmarks) {
+            var x = b.Categories.Select(c => c.CategoryName).Intersect(categories);
+        }
+        return bookmarks.Where(b => {
+            var title = b.Title ?? "";
+            var description = b.Description ?? "";
+            return patterns.Any(pattern =>
+                Regex.IsMatch(title, pattern, RegexOptions.IgnoreCase) ||
+                Regex.IsMatch(description, pattern, RegexOptions.IgnoreCase) ||
+                b.Categories.Select(c => c.CategoryName).Intersect(categories).Any(
+                    c => Regex.IsMatch(c ?? "", pattern, RegexOptions.IgnoreCase)
+                ));
+        });
+    }
+
     // [Authorize(Roles = "User,Admin")]
-    public IActionResult Index() {
+    public async Task<IActionResult> Index([FromQuery] bool listView = false, [FromQuery] int pageSize = 5,
+        [FromQuery] int page = 1, [FromQuery] string search = "") {
         //Luam tabelul Bookmarks din baza de date
-        var bookmarks = _bookmarks
+        IEnumerable<Bookmark> query = _bookmarks
+            .Include(b => b.Categories)
             .Include(b => b.User)
             .Include(b => b.Comments)
             .Include(b => b.Reviews)
             .AsEnumerable()
-            .OrderByDescending(b => b.AverageRating )
-            .ThenByDescending(b => b.Date)
-            .ToList();
+            .OrderByDescending(b => b.AverageRating)
+            .ThenByDescending(b => b.Date);
+        var user = await _userManager.GetUserAsync(HttpContext.User);
+        IEnumerable<string> categories = await _context.Categories
+            .Where(c => c.User == user)
+            .Select(c => c.CategoryName)
+            .ToListAsync();
+        if (!string.IsNullOrEmpty(search)) {
+            query = SearchBookmarks(query, search, categories);
+        }
+
+        var enumerable = query.ToList();
+        var count = enumerable.Count;
+        if (listView) {
+            query = enumerable.Skip((page - 1) * pageSize).Take(pageSize);
+        }
+
+        var bookmarks = enumerable.ToList();
         ViewBag.Bookmarks = bookmarks;
+        ViewBag.ListView = listView;
+        ViewBag.PageSize = pageSize;
+        ViewBag.Page = page;
+        ViewBag.Search = search;
+        ViewBag.PageCount = (int)Math.Ceiling((double)count / pageSize);
         //Returnam view-ul Index cu lista de bookmarks
         return View();
     }
@@ -87,7 +139,7 @@ public class BookmarksController : Controller {
                     default:
                         return View(bookmark);
                 }
-                
+
                 // Create unique filename
                 string fileName;
                 string path;
@@ -209,7 +261,7 @@ public class BookmarksController : Controller {
             return RedirectToAction("Show", bookmark);
         }
     }
-    
+
     [HttpPost]
     [Authorize(Roles = "User,Admin")]
     public async Task<IActionResult> DeleteComment(int id) {
@@ -219,6 +271,7 @@ public class BookmarksController : Controller {
         if (comment?.User != user) {
             return Unauthorized();
         }
+
         _comments.Remove(comment);
         await _context.SaveChangesAsync();
         return RedirectToAction("Show", "Bookmarks", new { id = comment.BookmarkId });
@@ -242,13 +295,14 @@ public class BookmarksController : Controller {
             return RedirectToAction("Show", "Bookmarks", new { id = review.BookmarkId });
         }
     }
-    
+
     [HttpPost("[controller]/[action]/{id:int}")]
     [Authorize(Roles = "User,Admin")]
     public async Task<IActionResult> Review([FromRoute] int id, [FromQuery] int? rating) {
         if (rating == null) {
             return BadRequest();
         }
+
         var user = await _userManager.GetUserAsync(HttpContext.User);
         var review = _context.Reviews
             .Include(r => r.Bookmark)
@@ -265,6 +319,7 @@ public class BookmarksController : Controller {
         else {
             review.Rating = rating.Value;
         }
+
         await _context.SaveChangesAsync();
         return RedirectToAction("Show", "Bookmarks", new { id = review.BookmarkId });
     }
@@ -293,7 +348,7 @@ public class BookmarksController : Controller {
         // returnam lista de categorii
         return selectList;
     }
-    
+
     [NonAction]
     public async Task<List<Bookmark>> GetRelatedBookmarks(Bookmark bookmark) {
         var relatedBookmarks = await _bookmarks
@@ -312,18 +367,18 @@ public class BookmarksController : Controller {
             .ThenInclude(c => c.Bookmarks)
             .ThenInclude(b => b.User)
             .First(u => u.Id == identity.Id);
-            // .Include(u => u.SavedBookmarks)
-      return View(user);
+        // .Include(u => u.SavedBookmarks)
+        return View(user);
     }
 
     [Authorize(Roles = "User,Admin")]
-    public async Task<IActionResult> Save([FromForm] BookmarkSaveModel model)
-    {
+    public async Task<IActionResult> Save([FromForm] BookmarkSaveModel model) {
         var user = await _userManager.GetUserAsync(HttpContext.User);
         var bookmark = await _bookmarks.FindAsync(model.BookmarkId);
         if (bookmark == null) {
             return NotFound();
         }
+
         var category = await _context.Categories
             .Include(c => c.Bookmarks)
             .Include(c => c.User)
@@ -331,17 +386,20 @@ public class BookmarksController : Controller {
         if (category == null) {
             return NotFound();
         }
+
         // Check if user owns category or if bookmark is already saved in category
         if (category.User != user) {
             return Unauthorized();
         }
+
         if (!category.Bookmarks.Contains(bookmark)) {
             category.Bookmarks.Add(bookmark);
             await _context.SaveChangesAsync();
         }
+
         return RedirectToAction("Saved", "Bookmarks");
     }
-    
+
     [HttpGet("[action]/{id}")]
     public async Task<IActionResult> Profile([FromRoute] string id) {
         var user = await _context.Users
@@ -353,6 +411,7 @@ public class BookmarksController : Controller {
         if (user == null) {
             return NotFound();
         }
+
         return View(user);
     }
 }

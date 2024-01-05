@@ -1,0 +1,64 @@
+@model BookmarkViewModel
+
+
+<div class="card mb-3 bookmark-list-item">
+    <div class="d-flex flex-row g-0">
+        <div class="bookmark-list-item-media">
+            <a href="/Bookmarks/Show/@Model.Bookmark.Id">
+                @if (Model.Bookmark.MediaType is MediaType.LocalImage or MediaType.EmbeddedImage) {
+                    <img class="img-fluid rounded-start" src="@Model.Bookmark.MediaUrl" alt="Bookmark Image">
+                }
+                else if (Model.Bookmark.MediaType is MediaType.LocalVideo or MediaType.EmbeddedVideo) {
+                    <video class="img-fluid rounded-start" src="@Model.Bookmark.MediaUrl" alt="Bookmark Video" autoplay muted loop></video>
+                }
+            </a>
+        </div>
+        <div class="">
+            <div class="card-body">
+                <h5 class="card-title d-flex flex-row gap-2">
+                    <span>
+                        @Model.Bookmark.Title
+                    </span>
+                    <select class="star-rating" disabled>
+                        @{
+                            if (Model.Bookmark.AverageRating == 0) {
+                                <option value="" disabled selected></option>
+                            }
+                            for (int i = 5; i > 0; i--) {
+                                if (Model.Bookmark.AverageRating == i) {
+                                    <option value="@i" selected>@i</option>
+                                }
+                                else {
+                                    <option value="@i">@i</option>
+                                }
+                            }
+                        }
+                    </select>
+                </h5>
+                <div class="d-flex flex-row align-items-center p-2 mb-3">
+                    <a href="/Profile/@Model.Bookmark.User.Id">
+                        <img src="@Model.Bookmark.User.ProfilePicture" alt="@Model.Bookmark.User.Email" class="me-2" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%">
+                    </a>
+                    <div class="d-flex flex-column">
+                        <span class="me-2 author-name">@Model.Bookmark.User.UserName</span>
+                        <span class="author-bookmark">@(Model.Bookmark.User.Bookmarks?.Count ?? 0) bookmarks</span>
+                    </div>
+                </div>
+                <p class="card-text">
+                    <small class="text-muted">@Model.Bookmark.Date</small>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.PartialSectionScripts(
+    @<script>
+    $(() => {
+        console.log("bruh");
+        const stars = new StarRating('.star-rating', {
+            tooltip: false,
+            });
+        });
+    </script>
+    )
