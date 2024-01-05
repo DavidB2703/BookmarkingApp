@@ -27,8 +27,8 @@ public class BookmarksController : Controller {
         _roleManager = roleManager;
     }
 
-    [Authorize(Roles = "User,Admin")]
-    public async Task<IActionResult> Index() {
+    // [Authorize(Roles = "User,Admin")]
+    public IActionResult Index() {
         //Luam tabelul Bookmarks din baza de date
         var bookmarks = _bookmarks
             .Include(b => b.User)
@@ -173,7 +173,7 @@ public class BookmarksController : Controller {
         }
     }
 
-    [Authorize(Roles = "User,Admin")]
+    // [Authorize(Roles = "User,Admin")]
     public async Task<IActionResult> Show(int id) {
         var bookmark = _bookmarks
             .Include(b => b.User)
@@ -182,6 +182,8 @@ public class BookmarksController : Controller {
             .Include("Reviews")
             .First(art => art.Id == id);
         bookmark.RelatedBookmarks = await GetRelatedBookmarks(bookmark);
+        // Get available categories for current user (bookmark is not saved in these categories)
+        bookmark.Categ = await GetAllCategories();
         return View(bookmark);
     }
 
@@ -268,13 +270,15 @@ public class BookmarksController : Controller {
     }
 
     [Authorize(Roles = "User,Admin")]
-    public IEnumerable<SelectListItem> GetAllCategories() {
+    public async Task<IEnumerable<SelectListItem>> GetAllCategories() {
         // generam o lista de tipul SelectListItem fara elemente
         var selectList = new List<SelectListItem>();
 
+        var user = await _userManager.GetUserAsync(HttpContext.User);
         // extragem toate categoriile din baza de date
-        var categories = from cat in _context.Categories
-            select cat;
+        var categories = await _context.Categories
+            .Where(c => c.User == user)
+            .ToListAsync();
 
         // iteram prin categorii
         foreach (var category in categories) {
@@ -313,21 +317,42 @@ public class BookmarksController : Controller {
     }
 
     [Authorize(Roles = "User,Admin")]
-    public IActionResult Save(int id)
+    public async Task<IActionResult> Save([FromForm] BookmarkSaveModel model)
     {
-        // //adaugam bookmark-ul in lista de bookmark-uri salvate
-        //
-        // var userId = _userManager.GetUserId(HttpContext.User);
-        // //includem saved bookmarks la user
-        //
-        // var user = _context.Users.Include(u => u.SavedBookmarks).First(u => u.Id == userId);
-        // var bookmark = _bookmarks.Find(id);
-        // user.SavedBookmarks.Add(bookmark);
-        //
-        // _context.SaveChanges();
-        return RedirectToAction("Index");
-
-
-
+        var user = await _userManager.GetUserAsync(HttpContext.User);
+        var bookmark = await _bookmarks.FindAsync(model.BookmarkId);
+        if (bookmark == null) {
+            return NotFound();
+        }
+        var category = await _context.Categories
+            .Include(c => c.Bookmarks)
+            .Include(c => c.User)
+            .FirstOrDefaultAsync(c => c.Id == model.CategoryId);
+        if (category == null) {
+            return NotFound();
+        }
+        // Check if user owns category or if bookmark is already saved in category
+        if (category.User != user) {
+            return Unauthorized();
+        }
+        if (!category.Bookmarks.Contains(bookmark)) {
+            category.Bookmarks.Add(bookmark);
+            await _context.SaveChangesAsync();
+        }
+        return RedirectToAction("Saved", "Bookmarks");
+    }
+    
+    [HttpGet("[action]/{id}")]
+    public async Task<IActionResult> Profile([FromRoute] string id) {
+        var user = await _context.Users
+            .Include(u => u.Categories)
+            .ThenInclude(c => c.Bookmarks)
+            .ThenInclude(b => b.User)
+            .Include(u => u.Bookmarks)
+            .FirstOrDefaultAsync(u => u.Id == id);
+        if (user == null) {
+            return NotFound();
+        }
+        return View(user);
     }
 }

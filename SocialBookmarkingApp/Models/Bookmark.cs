@@ -30,7 +30,7 @@ public class Bookmark {
 
     // public virtual ICollection<ApplicationUser>? SavedBy { get; set; }
 
-    // [NotMapped] public IEnumerable<SelectListItem>? Categ { get; set; }
+    [NotMapped] public IEnumerable<SelectListItem>? Categ { get; set; }
 
     public virtual ICollection<Comment>? Comments { get; set; }
 

@@ -1,22 +1,24 @@
-@model Bookmark
+@model BookmarkViewModel
 
-<a href="/Bookmarks/Show/@Model.Id">
+<a href="/Bookmarks/Show/@Model.Bookmark.Id">
     <div class="card bookmark border-0">
-        @if (Model.MediaType is MediaType.LocalImage or MediaType.EmbeddedImage) {
-            <img class="card-img-top" src="@Model.MediaUrl" alt="Bookmark Image">
+        @if (Model.Bookmark.MediaType is MediaType.LocalImage or MediaType.EmbeddedImage) {
+            <img class="card-img-top" src="@Model.Bookmark.MediaUrl" alt="Bookmark Image">
         }
-        else if (Model.MediaType is MediaType.LocalVideo or MediaType.EmbeddedVideo) {
-            <video class="card-img-top" src="@Model.MediaUrl" alt="Bookmark Video" autoplay muted loop></video>
+        else if (Model.Bookmark.MediaType is MediaType.LocalVideo or MediaType.EmbeddedVideo) {
+            <video class="card-img-top" src="@Model.Bookmark.MediaUrl" alt="Bookmark Video" autoplay muted loop></video>
         }
         <div class="card-img-overlay">
-            <p class="bookmark-title">@Model.Title</p>
-            @* <a href="/Bookmarks/Save/@Model.Id" >  save  </a> *@
+            <p class="bookmark-title">@Model.Bookmark.Title</p>
+            @* <a href="/Bookmarks/Save/@Model.Bookmark.Id" >  save  </a> *@
         </div>
-        <div class="card-body">
-            <h5 class="card-title d-flex flex-row align-items-center gap-2">
-                <img src="@Model.User.ProfilePicture" alt="@Model.User.Email"/>
-                <span class="ms-2">@Model.User.UserName</span>
-            </h5>
-        </div>
+        @if (Model.ShowOwner) {
+            <div class="card-body">
+                <h5 class="card-title d-flex flex-row align-items-center gap-2">
+                    <img src="@Model.Bookmark.User.ProfilePicture" alt="@Model.Bookmark.User.Email"/>
+                    <span class="ms-2">@Model.Bookmark.User.UserName</span>
+                </h5>
+            </div>
+        }
     </div>
 </a>

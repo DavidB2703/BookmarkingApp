@@ -11,7 +11,9 @@
     <div class="bookmark-container-@category.Id">
     @foreach( var bookmark in category.Bookmarks)
     {
-        @Html.Partial("_BookmarkCard", bookmark)
+        @Html.Partial("_BookmarkCard", new BookmarkViewModel {
+            Bookmark = bookmark
+        })
     }
     </div>
 }

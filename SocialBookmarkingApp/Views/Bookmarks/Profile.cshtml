@@ -1,0 +1,87 @@
+@model ApplicationUser
+
+<div class="d-flex flex-row justify-content-center align-items-center p-5">
+    <div>
+        <img src="@Model.ProfilePicture" class="rounded-circle" style="width: 100px; height: 100px;" alt="@Model.UserName"/>
+    </div>
+    <div>
+        <p class="ms-3 fs-3 fw-bold mb-0">@Model.FullName</p>
+        <p class="ms-3 fs-5 fw-bold mb-1">@Model.Email</p>
+        <p class="ms-3 fs-7 mb-0">@(Model.Bookmarks?.Count ?? 0) bookmarks</p>
+    </div>
+</div>
+<ul class="nav nav-tabs" id="profileTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="bookmarks-tab" data-bs-toggle="tab" data-bs-target="#bookmarks-tab-pane" type="button" role="tab" aria-controls="bookmarks-tab-pane" aria-selected="true">Added Bookmarks</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="saved-tab" data-bs-toggle="tab" data-bs-target="#saved-tab-pane" type="button" role="tab" aria-controls="saved-tab-pane" aria-selected="false">Saved Bookmarks</button>
+    </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="bookmarks-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+        <div class="bookmark-container">
+            @foreach (SocialBookmarkingApp.Models.Bookmark bookmark in Model.Bookmarks ?? new List<SocialBookmarkingApp.Models.Bookmark>()) {
+                @Html.Partial("_BookmarkCard", new BookmarkViewModel {
+                    Bookmark = bookmark,
+                    ShowOwner = false
+                })
+            }
+        </div>
+    </div>
+    <div class="tab-pane fade pt-2" id="saved-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+        @foreach( var category in Model.Categories ?? new List<SocialBookmarkingApp.Models.Category>())
+        {
+            <h1>@category.CategoryName</h1>
+            <div class="bookmark-container-@category.Id">
+            @foreach( var bookmark in category.Bookmarks ?? new List<SocialBookmarkingApp.Models.Bookmark>())
+            {
+                @Html.Partial("_BookmarkCard", new BookmarkViewModel {
+                    Bookmark = bookmark
+                })
+            }
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+    $(() => {
+        // Get tab elements using jquery
+        const bookmarkTab = $('button[data-bs-toggle="tab"]');
+        console.log(bookmarkTab);
+
+        // Add event listener to all tab elements
+        bookmarkTab.on('shown.bs.tab', function (event) {
+            const tab = $(event.target);
+
+            // Get the tab pane that is currently active
+            const activeTabPane = tab.attr('aria-controls');
+            
+            if (activeTabPane === 'saved-tab-pane'){
+                const ids = @Json.Serialize((Model.Categories ?? new List<Category>()).Select(c => c.Id));
+                ids.forEach(id => {
+                    const container = document.querySelector(`.bookmark-container-${id}`);
+                    const msnry = new Masonry(container, {
+                        // options
+                        itemSelector: '.bookmark',
+                    });
+                    // console.log(container, msnry);
+                });
+            }
+        });
+            
+        const container = document.querySelector('.bookmark-container');
+        console.log(container);
+        const msnry = new Masonry(container, {
+            // options
+            itemSelector: '.bookmark',
+        });
+        console.log(container, msnry);
+        
+        
+        
+    });
+    </script>
+}

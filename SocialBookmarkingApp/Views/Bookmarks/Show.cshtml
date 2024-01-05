@@ -1,5 +1,8 @@
 ﻿@using SocialBookmarkingApp.Controllers
+@using Microsoft.AspNetCore.Identity
 @model SocialBookmarkingApp.Models.Bookmark
+
+@inject SignInManager<ApplicationUser> SignInManager
 
 
 <div class="d-flex bookmark-container">
@@ -12,12 +15,6 @@
         }
     </div>
     <div class="flex-grow-1 d-flex flex-column p-4">
-        <h3>
-            @Model.Title
-        </h3>
-        <p>
-            @Model.Description
-        </p>
         <div class="d-flex flex-row align-items-center mb-2">
             <form method="post" action="/Bookmarks/Review/@Model.Id">
                 <select class="star-rating" disabled>
@@ -37,32 +34,48 @@
                 </select>
             </form>
             <span class="ms-2">@(Model.Reviews?.Count ?? 0) Reviews</span>
+            @if (SignInManager.IsSignedIn(User)) {
+                <button class="btn btn-primary ml-auto" data-toggle="modal" data-target="#saveModal">
+                    Save
+                    <i class="bi bi-bookmark"></i>
+                </button>
+            }
         </div>
+        <h3>
+            @Model.Title
+        </h3>
+        <p>
+            @Model.Description
+        </p>
         <div class="d-flex flex-row align-items-center p-2 mb-3">
-            <img src="@Model.User.ProfilePicture" alt="@Model.User.Email" class="me-2" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%">
+            <a href="/Profile/@Model.User.Id">
+                <img src="@Model.User.ProfilePicture" alt="@Model.User.Email" class="me-2" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%">
+            </a>
             <div class="d-flex flex-column">
                 <span class="me-2 author-name">@Model.User.UserName</span>
                 <span class="author-bookmark">@(Model.User.Bookmarks?.Count ?? 0) bookmarks</span>
             </div>
-            <div class="ml-auto d-flex flex-row align-items-center gap-2">
-                Your rating:
-                <select class="star-rating-user" onchange="changeRating(this)">
-                    @{
-                        var rating = Model.Reviews?.FirstOrDefault(r => r.User?.UserName == User.Identity?.Name)?.Rating ?? 0;
-                        if (rating == 0) {
-                            <option value="" disabled selected></option>
-                        }
-                        for (int i = 5; i > 0; i--) {
-                            if (rating == i) {
-                                <option value="@i" selected>@i</option>
+            @if (SignInManager.IsSignedIn(User)) {
+                <div class="ml-auto d-flex flex-row align-items-center gap-2">
+                    Your rating:
+                    <select class="star-rating-user" onchange="changeRating(this)">
+                        @{
+                            var rating = Model.Reviews?.FirstOrDefault(r => r.User?.UserName == User.Identity?.Name)?.Rating ?? 0;
+                            if (rating == 0) {
+                                <option value="" disabled selected></option>
                             }
-                            else {
-                                <option value="@i">@i</option>
+                            for (int i = 5; i > 0; i--) {
+                                if (rating == i) {
+                                    <option value="@i" selected>@i</option>
+                                }
+                                else {
+                                    <option value="@i">@i</option>
+                                }
                             }
                         }
-                    }
-                </select>
-            </div>
+                    </select>
+                </div>
+            }
         </div>
         <div class="d-flex flex-column gap-2 flex-grow-1">
             <h4 class="fw-bold">
@@ -85,21 +98,23 @@
                     </div>
                 }
             </div>
-            @using (Html.BeginForm("NewComment", "Bookmarks", FormMethod.Post, new { @class = "form-horizontal mt-auto" })) {
-                @Html.AntiForgeryToken()
+            @if (SignInManager.IsSignedIn(User)) {
+                @using (Html.BeginForm("NewComment", "Bookmarks", FormMethod.Post, new { @class = "form-horizontal mt-auto" })) {
+                    @Html.AntiForgeryToken()
 
-                <input type="hidden" name="BookmarkId" value="@Model.Id"/>
+                    <input type="hidden" name="BookmarkId" value="@Model.Id"/>
 
-                <div class="input-group">
-                    @Html.TextArea("Content", null, new { @class = "form-control comment-bar", @placeholder = "Add a comment", @rows = 1, @style = "resize: none;" })
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="submit">
-                            <i class="bi bi-send-fill"></i>
-                        </button>
+                    <div class="input-group">
+                        @Html.TextArea("Content", null, new { @class = "form-control comment-bar", @placeholder = "Add a comment", @rows = 1, @style = "resize: none;" })
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="submit">
+                                <i class="bi bi-send-fill"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
 
-                @Html.ValidationMessage("Content", null, new { @class = "text-danger" })
+                    @Html.ValidationMessage("Content", null, new { @class = "text-danger" })
+                }
             }
         </div>
     </div>
@@ -111,12 +126,15 @@
 
 <div class="related-bookmark-container">
 
-@foreach( var bookmark in @Model.RelatedBookmarks)
-{
-    @await Html.PartialAsync("_BookmarkCard", bookmark)
-}
+    @foreach (var bookmark in @Model.RelatedBookmarks) {
+        @await Html.PartialAsync("_BookmarkCard", new BookmarkViewModel {
+                   Bookmark = bookmark
+               })
+    }
 
 </div>
+
+<partial name="_BookmarkSave" model="@(new BookmarkSaveModel() { Categories = Model.Categ, BookmarkId = Model.Id })"/>
 
 @section Scripts {
     <script>
