@@ -77,7 +77,6 @@ public class BookmarksController : Controller {
         if (!string.IsNullOrEmpty(search)) {
             query = SearchBookmarks(query, search, categories);
         }
-
         var enumerable = query.ToList();
         var count = enumerable.Count;
         if (listView) {

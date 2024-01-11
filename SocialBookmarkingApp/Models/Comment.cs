@@ -8,7 +8,7 @@ namespace SocialBookmarkingApp.Models
         [Key]
         public int Id { get; set; }
         
-        [Required]
+        [Required(ErrorMessage = "Continutul comentariului este obligatoriu")]
         public string? Content { get; set; }
         public DateTime Date { get; set; }
 
