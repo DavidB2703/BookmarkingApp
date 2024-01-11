@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "EEAKrAMUGmVlwM5gBkln3ah7mDtF7FtCcpWWY430qhM=",
+  "Hash": "C8dGABiGSDbm34ug2/lR/zkFlvTXXplwCDAN0e7E8bY=",
   "Source": "SocialBookmarkingApp",
   "BasePath": "_content/SocialBookmarkingApp",
   "Mode": "Default",
@@ -2550,6 +2550,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\2010c945-b6e7-4407-aeaf-7310415887ad.png"
     },
     {
+      "Identity": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\238a1ee9-7578-4995-813e-cd09e6c895ef.jpg",
+      "SourceId": "SocialBookmarkingApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\",
+      "BasePath": "_content/SocialBookmarkingApp",
+      "RelativePath": "uploads/238a1ee9-7578-4995-813e-cd09e6c895ef.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\238a1ee9-7578-4995-813e-cd09e6c895ef.jpg"
+    },
+    {
       "Identity": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\2b514afb-8e88-473d-842b-b691abd189fc.png",
       "SourceId": "SocialBookmarkingApp",
       "SourceType": "Discovered",
@@ -2599,6 +2616,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\2bd41725-ebd7-4493-90e5-d230f9897e88.png"
+    },
+    {
+      "Identity": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\31069790-64ee-46a8-89ff-66d9c655fed8.jpg",
+      "SourceId": "SocialBookmarkingApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\",
+      "BasePath": "_content/SocialBookmarkingApp",
+      "RelativePath": "uploads/31069790-64ee-46a8-89ff-66d9c655fed8.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\31069790-64ee-46a8-89ff-66d9c655fed8.jpg"
     },
     {
       "Identity": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\4363898d-2834-4062-9fb0-5813e6e9bc0b.png",
@@ -2652,6 +2686,23 @@
       "OriginalItemSpec": "wwwroot\\uploads\\46ad2883-33f7-48ac-a51e-80a05c635f91.jpeg"
     },
     {
+      "Identity": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\6c781ff3-3a66-4f47-b394-67096da8d52d.jpg",
+      "SourceId": "SocialBookmarkingApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\",
+      "BasePath": "_content/SocialBookmarkingApp",
+      "RelativePath": "uploads/6c781ff3-3a66-4f47-b394-67096da8d52d.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\6c781ff3-3a66-4f47-b394-67096da8d52d.jpg"
+    },
+    {
       "Identity": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\6feb70a8-c405-4c95-b2df-004812509101.jpg",
       "SourceId": "SocialBookmarkingApp",
       "SourceType": "Discovered",
@@ -2684,6 +2735,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\786753be-1a5d-4b04-916b-1a8fcd61363a.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\8e93e230-4119-4932-8e87-100ef9d6ec38.png",
+      "SourceId": "SocialBookmarkingApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\",
+      "BasePath": "_content/SocialBookmarkingApp",
+      "RelativePath": "uploads/8e93e230-4119-4932-8e87-100ef9d6ec38.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\8e93e230-4119-4932-8e87-100ef9d6ec38.png"
     },
     {
       "Identity": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\wwwroot\\uploads\\8eb01364-acf9-4e4e-bd50-f56ece7855b5.png",

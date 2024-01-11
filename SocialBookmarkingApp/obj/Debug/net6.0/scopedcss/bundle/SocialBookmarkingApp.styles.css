@@ -99,6 +99,7 @@ input[type=file][b-otkmsqzdwg] {
 
 .bookmark-title[b-1olyc09nws]{
     color: white;
+    position: relative;
     text-shadow: 0 0 10px black;
 }
 
@@ -110,6 +111,53 @@ input[type=file][b-otkmsqzdwg] {
     width: 30px;
     height: 30px;
     border-radius: 50%;
+}
+
+.card-img-overlay[b-1olyc09nws]:before{
+    /* Black to transparent background gradient */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    /* background: rgba(0,0,0,0.5); */
+    background: linear-gradient(
+            hsl(0, 0%, 0%, 0.738) 0%,
+            hsla(0, 0%, 0%, 0.541) 19%,
+            hsla(0, 0%, 0%, 0.382) 34%,
+            hsla(0, 0%, 0%, 0.278) 47%,
+            hsla(0, 0%, 0%, 0.194) 56.5%,
+            hsla(0, 0%, 0%, 0.126) 65%,
+            hsla(0, 0%, 0%, 0.075) 73%,
+            hsla(0, 0%, 0%, 0.042) 80.2%,
+            hsla(0, 0%, 0%, 0.021) 86.1%,
+            hsla(0, 0%, 0%, 0.008) 91%,
+            hsla(0, 0%, 0%, 0.002) 95.2%,
+            hsla(0, 0%, 0%, 0.002) 98.2%,
+            hsla(0, 0%, 0%, 0) 100%
+    );
+}
+/* _content/SocialBookmarkingApp/Views/Bookmarks/_BookmarkList.cshtml.rz.scp.css */
+.bookmark-list-item[b-8qkuucok2b]{
+    @media screen and (max-width: 768px) {
+        flex-wrap: wrap;[b-8qkuucok2b]
+    }
+}
+.bookmark-list-item-media[b-8qkuucok2b]{
+    @media screen and (min-width: 768px){
+        max-width: 30%;[b-8qkuucok2b]
+    }
+}
+.bookmark-list-item-media>a>img[b-8qkuucok2b]{
+    @media screen and (min-width: 768px){
+        max-height: 170px;[b-8qkuucok2b]
+    }
+}
+.bookmark-list-item-media>a>video[b-8qkuucok2b]{
+    @media screen and (min-width: 768px){
+        max-height: 170px;[b-8qkuucok2b]
+    }
 }
 /* _content/SocialBookmarkingApp/Views/Shared/_Layout.cshtml.rz.scp.css */
 /* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification

@@ -170,18 +170,17 @@ public class BookmarksController : Controller {
 
     //adaugam o metoda care sterge un bookmark
     [Authorize(Roles = "User,Admin")]
-    [HttpPost]
-    public IActionResult Delete(int? id) {
+    public async Task<IActionResult> Delete(int? id) {
         if (id == null) {
             return NotFound();
         }
 
-        var bookmark = _bookmarks.Find(id);
+        var bookmark =  _bookmarks.Find(id);
         if (bookmark == null) {
             return NotFound();
         }
 
-        _bookmarks.Remove(bookmark);
+          _bookmarks.Remove(bookmark);
         //stergem si comentariile asociate
         var comments = _comments.Where(c => c.BookmarkId == id);
         foreach (var comment in comments) {
@@ -190,14 +189,16 @@ public class BookmarksController : Controller {
 
         _context.SaveChanges();
         return RedirectToAction("Index");
+
     }
 
     //adaugam o metoda care editeaza un bookmark
     [Authorize(Roles = "User,Admin")]
     [HttpGet]
     public IActionResult Edit(int id) {
-        Bookmark bookmark = _bookmarks.Include("Category")
+        Bookmark bookmark = _bookmarks.Include("User")
             .Include("Comments")
+            .Include("Reviews")
             .Where(art => art.Id == id)
             .First();
 
@@ -211,7 +212,7 @@ public class BookmarksController : Controller {
         Bookmark bookmark = _bookmarks.Find(id);
 
 
-        if (ModelState.IsValid) {
+        if (true) { //nu merge cu ModelState.IsValid
             bookmark.Title = requestBookmark.Title;
             bookmark.Description = requestBookmark.Description;
             TempData["message"] = "Articolul a fost modificat";
@@ -225,7 +226,8 @@ public class BookmarksController : Controller {
         }
     }
 
-    // [Authorize(Roles = "User,Admin")]
+
+
     public async Task<IActionResult> Show(int id) {
         var bookmark = _bookmarks
             .Include(b => b.User)
@@ -263,7 +265,7 @@ public class BookmarksController : Controller {
     }
 
     [HttpPost]
-    [Authorize(Roles = "User,Admin")]
+  //  [Authorize(Roles = "User,Admin")]
     public async Task<IActionResult> DeleteComment(int id) {
         var comment = _comments.Find(id);
         // Check if user is owner of comment

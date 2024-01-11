@@ -35,14 +35,20 @@
                     <li class="nav-item">
                         <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Index">Bookmarks</a>
                     </li>
-                    <li class="nav-item">
-                        <!--accesam bookmark-urile salvate, apeland functia save, avand ca parametru id-ul userului curent-->
+                    <!-- daca user-ul e admin sau user simplu -->
+                @if (User.IsInRole("Admin") || User.IsInRole("User"))
 
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Saved">Saved</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark text-nowrap" asp-area="" asp-controller="Bookmarks" asp-action="New">Create Bookmark</a>
-                    </li>
+                   {
+                            <li class="nav-item">
+                                <!--accesam bookmark-urile salvate, apeland functia save, avand ca parametru id-ul userului curent-->
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Saved">Saved</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark text-nowrap" asp-area="" asp-controller="Bookmarks" asp-action="New">Create Bookmark</a>
+                            </li>
+                            
+                    }
+                 
                     <div class="container-fluid">
                         <form class="d-flex" role="search" method="get" action="/">
                             @if(HttpContextAccessor.HttpContext.Request.Query["search"].ToString() != "")

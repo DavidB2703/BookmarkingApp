@@ -868,3 +868,4 @@ C:\Users\david\Source\Repos\DavidB2703\BookmarkingApp\SocialBookmarkingApp\obj\D
 C:\Users\david\Source\Repos\DavidB2703\BookmarkingApp\SocialBookmarkingApp\obj\Debug\net6.0\SocialBookmarkingApp.genruntimeconfig.cache
 C:\Users\david\Source\Repos\DavidB2703\BookmarkingApp\SocialBookmarkingApp\obj\Debug\net6.0\ref\SocialBookmarkingApp.dll
 C:\Users\david\Source\Repos\DavidB2703\BookmarkingApp\SocialBookmarkingApp\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\david\Source\Repos\DavidB2703\BookmarkingApp\SocialBookmarkingApp\obj\Debug\net6.0\scopedcss\Views\Bookmarks\_BookmarkList.cshtml.rz.scp.css

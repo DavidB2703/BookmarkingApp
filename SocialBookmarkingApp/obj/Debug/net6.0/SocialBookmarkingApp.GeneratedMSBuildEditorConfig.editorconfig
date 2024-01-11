@@ -36,12 +36,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/david/Source/Repos/DavidB2703/BookmarkingApp/SocialBookmarkingApp/Views/Bookmarks/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va21hcmtzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/david/Source/Repos/DavidB2703/BookmarkingApp/SocialBookmarkingApp/Views/Bookmarks/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va21hcmtzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/david/Source/Repos/DavidB2703/BookmarkingApp/SocialBookmarkingApp/Views/Bookmarks/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va21hcmtzXFByb2ZpbGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/david/Source/Repos/DavidB2703/BookmarkingApp/SocialBookmarkingApp/Views/Bookmarks/Saved.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va21hcmtzXFNhdmVkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/david/Source/Repos/DavidB2703/BookmarkingApp/SocialBookmarkingApp/Views/Bookmarks/_BookmarkSave.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va21hcmtzXF9Cb29rbWFya1NhdmUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/david/Source/Repos/DavidB2703/BookmarkingApp/SocialBookmarkingApp/Views/Categories/Edit.cshtml]
@@ -111,6 +123,10 @@ build_metadata.AdditionalFiles.CssScope = b-950fbi37mf
 [C:/Users/david/Source/Repos/DavidB2703/BookmarkingApp/SocialBookmarkingApp/Views/Bookmarks/_BookmarkCard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va21hcmtzXF9Cb29rbWFya0NhcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-1olyc09nws
+
+[C:/Users/david/Source/Repos/DavidB2703/BookmarkingApp/SocialBookmarkingApp/Views/Bookmarks/_BookmarkList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQm9va21hcmtzXF9Cb29rbWFya0xpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-8qkuucok2b
 
 [C:/Users/david/Source/Repos/DavidB2703/BookmarkingApp/SocialBookmarkingApp/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s

@@ -12,6 +12,7 @@
 {
     @Html.AntiForgeryToken()
 
+
     <div class="form-group">
         @Html.HiddenFor(model => model.Id) <!-- Adăugăm un câmp ascuns pentru Id -->
         @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
