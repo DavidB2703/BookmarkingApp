@@ -8,7 +8,7 @@
 @using (Html.BeginForm("New", "Bookmarks", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" })) {
     @Html.AntiForgeryToken()
 
-    <div class="d-flex flex-row align-items-center justify-content-center gap-5 p-3">
+    <div class="d-flex flex-row align-items-stretch justify-content-center gap-5 p-3">
 
         <div class="d-flex flex-column flex-shrink-1" style="{min-width: 0}">
             <label for="media" class="drop-container">
@@ -17,7 +17,12 @@
                 or
                 <input id="media" asp-for="Media" accept="image/*, video/*">
             </label>
+            <span class="text-center my-3">
+                or
+            </span>
+            @Html.TextBoxFor(m => m.MediaUrl, new { @class = "form-control", placeholder = "Paste Image/Video URL" })
 
+            <input type="submit" value="Add Bookmark" class="btn btn-primary d-block mt-auto"/>
         </div>
 
         <div class="d-flex flex-column flex-grow-1">
@@ -32,7 +37,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = 3 })
+                    @Html.TextAreaFor(model => model.Description, new { @class = "summernote", rows = 3 })
                     @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -43,12 +48,6 @@
 
         </div>
 
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Adaugă Bookmark" class="btn btn-primary"/>
-        </div>
     </div>
 }
 

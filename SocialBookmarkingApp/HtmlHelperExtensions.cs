@@ -1,8 +1,11 @@
+using System.Security.Claims;
 using System.Text.Encodings.Web;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Html;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using SocialBookmarkingApp.Models;
 
 namespace SocialBookmarkingApp; 
 
@@ -32,5 +35,15 @@ public static class HtmlHelperExtensions
             }
         }
         return contentBuilder;
+    }
+    
+    public static async Task<bool> CanEditResource(this IHtmlHelper htmlHelper, 
+        UserManager<ApplicationUser> userManager, 
+        SignInManager<ApplicationUser> signInManager,
+        ApplicationUser? owner) {
+        if (owner == null) return true;
+        var user = await userManager.GetUserAsync(htmlHelper.ViewContext.HttpContext.User);
+        if (user == null || !signInManager.IsSignedIn(htmlHelper.ViewContext.HttpContext.User)) return false;
+        return user.Id == owner.Id || (await userManager.IsInRoleAsync(user, "Admin"));
     }
 }

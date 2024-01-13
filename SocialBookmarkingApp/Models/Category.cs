@@ -8,7 +8,7 @@ namespace SocialBookmarkingApp.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "Numele categoriei este obligatoriu")]
-        public string? CategoryName { get; set; }
+        public string CategoryName { get; set; }
 
         //o categorie este creata de un user
         public virtual ApplicationUser? User { get; set; }

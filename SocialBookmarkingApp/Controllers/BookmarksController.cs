@@ -1,4 +1,6 @@
 ﻿using System.Text.RegularExpressions;
+using AngleSharp.Dom;
+using Ganss.Xss;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -16,20 +18,23 @@ public class BookmarksController : Controller {
 
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
+    private IWebHostEnvironment _env;
 
     public static string UploadFolder = "uploads";
 
     public BookmarksController(ApplicationDbContext context, UserManager<ApplicationUser> userManager,
-        RoleManager<IdentityRole> roleManager) {
+        RoleManager<IdentityRole> roleManager, IWebHostEnvironment env) {
         _context = context;
         _bookmarks = context.Bookmarks;
         _comments = context.Comments;
         _userManager = userManager;
         _roleManager = roleManager;
+        _env = env;
     }
 
     [NonAction]
-    private IEnumerable<Bookmark> SearchBookmarks(IEnumerable<Bookmark> bookmarks, string search, IEnumerable<string> categories) {
+    private IEnumerable<Bookmark> SearchBookmarksEnumerable(IEnumerable<Bookmark> bookmarks, string search,
+        IEnumerable<string> categories) {
         if (string.IsNullOrEmpty(search)) {
             return bookmarks;
         }
@@ -37,14 +42,13 @@ public class BookmarksController : Controller {
         // Turn search string into array of keywords
         var keywords = search.Split(' ');
         // Turn keywords into regex patterns that match misspelled words
-        var patterns = keywords.Select(k => {
-                return k.Aggregate("", (current, c) => current + $".*[{c}].*");
-            }
+        var patterns = keywords.Select(k => { return k.Aggregate("", (current, c) => current + $".*[{c}].*"); }
         ).ToArray();
         // Search for keywords in title, description, and categories owned by user
         foreach (var b in bookmarks) {
             var x = b.Categories.Select(c => c.CategoryName).Intersect(categories);
         }
+
         return bookmarks.Where(b => {
             var title = b.Title ?? "";
             var description = b.Description ?? "";
@@ -57,34 +61,66 @@ public class BookmarksController : Controller {
         });
     }
 
+    [NonAction]
+    private IQueryable<Bookmark> SearchBookmarks(IQueryable<Bookmark> bookmarks, string search,
+        IQueryable<string> categories) {
+        if (string.IsNullOrEmpty(search)) {
+            return bookmarks;
+        }
+
+        // Turn search string into array of keywords
+        var keywords = search.Split(' ');
+        // Turn keywords into regex patterns that match misspelled words
+        var patterns = keywords.Select(k => { return k.Aggregate("", (current, c) => current + $"%{c}%"); }
+        );
+        // Join patterns by OR operator
+        var matchedQueries = patterns.Select(pattern =>
+            bookmarks.Where(b => EF.Functions.Like(b.Title, pattern) ||
+                                 EF.Functions.Like(b.Description, pattern) ||
+                                 b.Categories.Any(c => EF.Functions.Like(c.CategoryName, pattern))
+            )
+        );
+
+        // Union queries
+        var matchedBookmarks = matchedQueries.Aggregate((current, next) => current.Union(next));
+
+        return matchedBookmarks;
+    }
+
+    [NonAction]
+    private IQueryable<Bookmark> OrderBookmarks(IQueryable<Bookmark> bookmarks) {
+        // Order by average rating descending (using .Average())
+        return bookmarks.OrderByDescending(b => b.Reviews.Average(r => r.Rating))
+            .ThenByDescending(b => b.Date);
+    }
+
     // [Authorize(Roles = "User,Admin")]
     public async Task<IActionResult> Index([FromQuery] bool listView = false, [FromQuery] int pageSize = 5,
         [FromQuery] int page = 1, [FromQuery] string search = "") {
         //Luam tabelul Bookmarks din baza de date
-        IEnumerable<Bookmark> query = _bookmarks
+        IQueryable<Bookmark> query = _bookmarks
             .Include(b => b.Categories)
             .Include(b => b.User)
             .Include(b => b.Comments)
-            .Include(b => b.Reviews)
-            .AsEnumerable()
-            .OrderByDescending(b => b.AverageRating)
-            .ThenByDescending(b => b.Date);
+            .Include(b => b.Reviews);
         var user = await _userManager.GetUserAsync(HttpContext.User);
-        IEnumerable<string> categories = await _context.Categories
+        IQueryable<string> categories = _context.Categories
             .Where(c => c.User == user)
-            .Select(c => c.CategoryName)
-            .ToListAsync();
+            .Select(c => c.CategoryName ?? "");
         if (!string.IsNullOrEmpty(search)) {
             query = SearchBookmarks(query, search, categories);
         }
-        var enumerable = query.ToList();
-        var count = enumerable.Count;
+
+        query = OrderBookmarks(query);
+        var count = query.Count();
         if (listView) {
-            query = enumerable.Skip((page - 1) * pageSize).Take(pageSize);
+            query = query.Skip((page - 1) * pageSize).Take(pageSize);
         }
 
-        var bookmarks = enumerable.ToList();
+        var bookmarks = await query.ToListAsync();
+
         ViewBag.Bookmarks = bookmarks;
+        // ViewBag.Bookmarks = new List<Bookmark>();
         ViewBag.ListView = listView;
         ViewBag.PageSize = pageSize;
         ViewBag.Page = page;
@@ -106,89 +142,114 @@ public class BookmarksController : Controller {
 
     [Authorize(Roles = "User,Admin")]
     [HttpPost]
-    public ActionResult New(BookmarkCreate bookmark) {
-        if (ModelState.IsValid) {
-            // Get current user
-            var user = _userManager.GetUserAsync(HttpContext.User).Result;
-            var model = new Bookmark {
-                Title = bookmark.Title,
-                Description = bookmark.Description,
-                Link = bookmark.Link,
-                Date = DateTime.UtcNow,
-                User = user
-            };
-            if (bookmark.Media != null) {
-                // Save image to wwwroot/uploads
+    public async Task<IActionResult> New(BookmarkCreate bookmark) {
+        if (!ModelState.IsValid) return View(bookmark);
+        // Get current user
+        var user = _userManager.GetUserAsync(HttpContext.User).Result;
+        var sanitizer = new HtmlSanitizer();
+        var model = new Bookmark {
+            Title = bookmark.Title,
+            Description = sanitizer.Sanitize(bookmark.Description),
+            Link = bookmark.Link,
+            Date = DateTime.UtcNow,
+            User = user
+        };
+        if (bookmark.Media != null) {
+            // Save image to wwwroot/uploads
 
-                // Check if media is image or video
-                var ext = Path.GetExtension(bookmark.Media.FileName);
-                MediaType mediaType;
+            // Check if media is image or video
+            var ext = Path.GetExtension(bookmark.Media.FileName);
+            MediaType mediaType;
 
-                switch (ext) {
-                    case ".jpg":
-                    case ".png":
-                    case ".jpeg":
-                        mediaType = MediaType.LocalImage;
-                        break;
-                    case ".mp4":
-                    case ".avi":
-                    case ".mov":
-                        mediaType = MediaType.LocalVideo;
-                        break;
-                    default:
-                        return View(bookmark);
-                }
-
-                // Create unique filename
-                string fileName;
-                string path;
-                do {
-                    fileName = Guid.NewGuid() + ext;
-                    path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", UploadFolder, fileName);
-                } while (System.IO.File.Exists(path));
-
-                // Save file
-                using (var fileStream = new FileStream(path, FileMode.Create)) {
-                    bookmark.Media.CopyTo(fileStream);
-                }
-
-                model.MediaType = mediaType;
-                var uri = new Uri(Path.Combine(UploadFolder, fileName), UriKind.Relative);
-                model.MediaUrl = "/" + uri.ToString();
+            switch (ext) {
+                case ".jpg":
+                case ".png":
+                case ".jpeg":
+                    mediaType = MediaType.LocalImage;
+                    break;
+                case ".mp4":
+                case ".avi":
+                case ".mov":
+                    mediaType = MediaType.LocalVideo;
+                    break;
+                default:
+                    TempData["errorMessage"] = "Invalid File Type";
+                    return View(bookmark);
             }
 
-            _bookmarks.Add(model);
-            _context.SaveChanges();
-            // Redirectare către o altă acțiune sau o pagină
-            return RedirectToAction("Index");
+            // Create unique filename
+            string fileName;
+            string path;
+            do {
+                fileName = Guid.NewGuid() + ext;
+                path = Path.Combine(_env.WebRootPath, UploadFolder, fileName);
+            } while (System.IO.File.Exists(path));
+
+            // Save file
+            using (var fileStream = new FileStream(path, FileMode.Create)) {
+                await bookmark.Media.CopyToAsync(fileStream);
+            }
+
+            model.MediaType = mediaType;
+            var uri = new Uri(Path.Combine(UploadFolder, fileName), UriKind.Relative);
+            model.MediaUrl = "/" + uri;
+        } else if(bookmark.MediaUrl != null) {
+            var url = new Url(bookmark.MediaUrl);
+            if (url.IsInvalid) {
+                TempData["errorMessage"] = "Invalid URL";
+                return View(bookmark);
+            }
+            var extention = Path.GetExtension(url.Path);
+            MediaType mediaType;
+            switch (extention) {
+                case ".jpg":
+                case ".png":
+                case ".jpeg":
+                    mediaType = MediaType.EmbeddedImage;
+                    break;
+                case ".mp4":
+                case ".avi":
+                case ".mov":
+                    mediaType = MediaType.EmbeddedVideo;
+                    break;
+                default:
+                    TempData["errorMessage"] = "Invalid File Type";
+                    return View(bookmark);
+            }
+            model.MediaType = mediaType;
+            model.MediaUrl = bookmark.MediaUrl;
+        } else {
+            TempData["errorMessage"] = "Image/Video is required";
+            return View(bookmark);
         }
 
-        // Dacă modelul nu este valid, revenim la formularul de adăugare cu erori
-        return View(bookmark);
+        await _bookmarks.AddAsync(model);
+        await _context.SaveChangesAsync();
+        TempData["successMessage"] = "Bookmark added successfully!";
+        // Redirectare către o altă acțiune sau o pagină
+        return RedirectToAction("Index");
     }
 
     //adaugam o metoda care sterge un bookmark
     [Authorize(Roles = "User,Admin")]
-    public async Task<IActionResult> Delete(int? id) {
-        if (id == null) {
-            return NotFound();
-        }
-
-        var bookmark =  _bookmarks.Find(id);
+    [HttpPost("[controller]/[action]/{id:int}")]
+    public async Task<IActionResult> Delete([FromRoute] int id) {
+        var bookmark = await _bookmarks.FindAsync(id);
         if (bookmark == null) {
-            return NotFound();
+            TempData["errorMessage"] = "Bookmark not found";
+            return RedirectToAction("Index");
         }
 
-          _bookmarks.Remove(bookmark);
+        _bookmarks.Remove(bookmark);
         //stergem si comentariile asociate
         var comments = _comments.Where(c => c.BookmarkId == id);
         foreach (var comment in comments) {
             _comments.Remove(comment);
         }
 
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
+        TempData["successMessage"] = "Bookmark deleted successfully!";
         return RedirectToAction("Index");
-
     }
 
     //adaugam o metoda care editeaza un bookmark
@@ -226,12 +287,12 @@ public class BookmarksController : Controller {
     }
 
 
-
     public async Task<IActionResult> Show(int id) {
         var bookmark = _bookmarks
             .Include(b => b.User)
             .ThenInclude(u => u.Bookmarks)
-            .Include("Comments")
+            .Include(b => b.Comments)
+            .ThenInclude(c => c.User)
             .Include("Reviews")
             .First(art => art.Id == id);
         bookmark.RelatedBookmarks = await GetRelatedBookmarks(bookmark);
@@ -264,13 +325,18 @@ public class BookmarksController : Controller {
     }
 
     [HttpPost]
-  //  [Authorize(Roles = "User,Admin")]
+    [Authorize(Roles = "User,Admin")]
     public async Task<IActionResult> DeleteComment(int id) {
-        var comment = _comments.Find(id);
+        var comment = await _comments.FindAsync(id);
+        if (comment == null) {
+            TempData["errorMessage"] = "Comment not found";
+            return RedirectToAction("Index");
+        }
         // Check if user is owner of comment
         var user = await _userManager.GetUserAsync(HttpContext.User);
-        if (comment?.User != user) {
-            return Unauthorized();
+        if (comment.User != user && !await _userManager.IsInRoleAsync(user, "Admin")) {
+            TempData["errorMessage"] = "User not authorized";
+            return RedirectToAction("Show", "Bookmarks", new { id = comment.BookmarkId });
         }
 
         _comments.Remove(comment);
@@ -373,11 +439,18 @@ public class BookmarksController : Controller {
     }
 
     [Authorize(Roles = "User,Admin")]
+    [HttpPost]
     public async Task<IActionResult> Save([FromForm] BookmarkSaveModel model) {
         var user = await _userManager.GetUserAsync(HttpContext.User);
         var bookmark = await _bookmarks.FindAsync(model.BookmarkId);
         if (bookmark == null) {
-            return NotFound();
+            TempData["errorMessage"] = "Bookmark not found";
+            return RedirectToAction("Show", "Bookmarks", new { id = bookmark.Id });
+        }
+
+        if (model.CategoryId == null) {
+            TempData["errorMessage"] = "Category is required";
+            return RedirectToAction("Show", "Bookmarks", new { id = bookmark.Id });
         }
 
         var category = await _context.Categories
@@ -385,19 +458,60 @@ public class BookmarksController : Controller {
             .Include(c => c.User)
             .FirstOrDefaultAsync(c => c.Id == model.CategoryId);
         if (category == null) {
-            return NotFound();
+            TempData["errorMessage"] = "Category not found";
+            return RedirectToAction("Show", "Bookmarks", new { id = bookmark.Id });
         }
 
         // Check if user owns category or if bookmark is already saved in category
-        if (category.User != user) {
-            return Unauthorized();
+        if (category.User != user && _userManager.IsInRoleAsync(user, "Admin").Result) {
+            TempData["errorMessage"] = "User not authorized";
+            return RedirectToAction("Show", "Bookmarks", new { id = bookmark.Id });
         }
 
-        if (!category.Bookmarks.Contains(bookmark)) {
+        if (!(category.Bookmarks?.Contains(bookmark) ?? true)) {
             category.Bookmarks.Add(bookmark);
             await _context.SaveChangesAsync();
         }
+        TempData["successMessage"] = "Bookmark saved successfully!";
 
+        return RedirectToAction("Saved", "Bookmarks");
+    }
+
+    [Authorize(Roles = "User,Admin")]
+    [HttpPost("[controller]/Remove/{bookmarkId:int}/{categoryId:int}")]
+    public async Task<IActionResult> RemoveFromCategory([FromRoute] int bookmarkId, [FromRoute] int categoryId) {
+        var user = await _userManager.GetUserAsync(HttpContext.User);
+        var category = await _context.Categories
+            .Include(c => c.Bookmarks)
+            .Include(c => c.User)
+            .FirstOrDefaultAsync(c => c.Id == categoryId);
+        if (category == null) {
+            TempData["errorMessage"] = "Category not found";
+            return RedirectToAction("Saved", "Bookmarks");
+        }
+
+        if (category.User != user) {
+            TempData["errorMessage"] = "User not authorized";
+            return RedirectToAction("Saved", "Bookmarks");
+        }
+
+        var bookmark = await _bookmarks
+            .Include(b => b.Categories)
+            .FirstOrDefaultAsync(b => b.Id == bookmarkId);
+        if (bookmark == null) {
+            TempData["errorMessage"] = "Bookmark not found";
+            return RedirectToAction("Saved", "Bookmarks");
+        }
+
+        if (!(category.Bookmarks?.Contains(bookmark) ?? false)) {
+            TempData["errorMessage"] = "Bookmark not found in category";
+            return RedirectToAction("Saved", "Bookmarks");
+        }
+
+        // Remove bookmark from category
+        category.Bookmarks.Remove(bookmark);
+        await _context.SaveChangesAsync();
+        TempData["successMessage"] = "Bookmark removed from category";
         return RedirectToAction("Saved", "Bookmarks");
     }
 
@@ -409,10 +523,9 @@ public class BookmarksController : Controller {
             .ThenInclude(b => b.User)
             .Include(u => u.Bookmarks)
             .FirstOrDefaultAsync(u => u.Id == id);
-        if (user == null) {
-            return NotFound();
-        }
+        if (user != null) return View(user);
+        TempData["errorMessage"] = "User not found";
+        return RedirectToAction("Index", "Bookmarks");
 
-        return View(user);
     }
 }

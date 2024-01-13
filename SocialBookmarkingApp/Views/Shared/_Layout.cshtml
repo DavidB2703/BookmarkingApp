@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - SocialBookmarkingApp</title>
+    <title>@ViewData["Title"] - Mark.er</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
@@ -17,6 +17,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="~/lib/star-rating/dist/star-rating.min.css" rel="stylesheet" type="text/css"/>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
     <link rel="stylesheet" href="~/SocialBookmarkingApp.styles.css" asp-append-version="true"/>
 </head>
@@ -24,7 +28,10 @@
 <header>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
         <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Bookmarks" asp-action="Index">SocialBookmarkingApp</a>
+            <a class="navbar-brand d-flex flex-row align-items-center gap-1" asp-area="" asp-controller="Bookmarks" asp-action="Index">
+                <img src="/images/logo.svg" alt="Bookmarkr" height="30"/>
+                <span class="logo-text">Mark.er</span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -36,23 +43,19 @@
                         <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Index">Bookmarks</a>
                     </li>
                     <!-- daca user-ul e admin sau user simplu -->
-                @if (User.IsInRole("Admin") || User.IsInRole("User"))
-
-                   {
-                            <li class="nav-item">
-                                <!--accesam bookmark-urile salvate, apeland functia save, avand ca parametru id-ul userului curent-->
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Saved">Saved</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark text-nowrap" asp-area="" asp-controller="Bookmarks" asp-action="New">Create Bookmark</a>
-                            </li>
-                            
+                    @if (User.IsInRole("Admin") || User.IsInRole("User")) {
+                        <li class="nav-item">
+                            <!--accesam bookmark-urile salvate, apeland functia save, avand ca parametru id-ul userului curent-->
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Bookmarks" asp-action="Saved">Saved</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark text-nowrap" asp-area="" asp-controller="Bookmarks" asp-action="New">Create Bookmark</a>
+                        </li>
                     }
-                 
+
                     <div class="container-fluid">
                         <form class="d-flex" role="search" method="get" action="/">
-                            @if(HttpContextAccessor.HttpContext.Request.Query["search"].ToString() != "")
-                            {
+                            @if (HttpContextAccessor.HttpContext.Request.Query["search"].ToString() != "") {
                                 <input type="search" name="search" value="@HttpContextAccessor.HttpContext.Request.Query["search"].ToString()" class="form-control me-2 flex-shrink-1" placeholder="Search Bookmarks" aria-label="Search">
                             }
                             else {
@@ -72,6 +75,16 @@
 </header>
 <div class="container">
     <main role="main" class="pb-3">
+        @if (TempData["successMessage"] != null) {
+            <div class="alert alert-success p-3 rounded-3 text-center mt-2">
+                @TempData["successMessage"]
+            </div>
+        }
+        @if (TempData["errorMessage"] != null) {
+            <div class="alert alert-danger p-3 rounded-3 text-center mt-2">
+                @TempData["errorMessage"]
+            </div>
+        }
         @RenderBody()
     </main>
 </div>
@@ -87,6 +100,15 @@
 <script src="~/lib/star-rating/dist/star-rating.min.js" type="text/javascript"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+<script>
+$(document).ready(function() {
+  $('.summernote').summernote({
+    height: 210,
+    minHeight: 210
+  });
+});
+</script>
 @await RenderSectionAsync("Scripts", required: false)
 @Html.RenderPartialSectionScripts()
 </body>

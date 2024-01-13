@@ -37,51 +37,66 @@
                 </select>
             </form>
             <span class="ms-2">@(Model.Reviews?.Count ?? 0) Reviews</span>
-            @if (SignInManager.IsSignedIn(User)) {
-                <button class="btn btn-primary ml-auto" data-toggle="modal" data-target="#saveModal">
-                    Save
-                    <i class="bi bi-bookmark"></i>
-                </button>
-            }
+            <div class="ms-auto gap-1">
+                @if (SignInManager.IsSignedIn(User)) {
+                    <button class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#saveModal">
+                        <i class="bi bi-bookmark"></i>
+                    </button>
+                }
+                @if (await Html.CanEditResource(UserManager, SignInManager, Model.User)) {
+                    // Edit button
+                    <a href="/Bookmarks/Edit/@Model.Id" class="btn btn-secondary">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    // Delete button
+                    <form class="d-inline" action="/Bookmarks/Delete/@Model.Id" method="post">
+                        <button type="submit" class="btn btn-danger">
+                            <i class="bi bi-trash3-fill"></i>
+                        </button>
+                    </form>
+                }
+            </div>
         </div>
         <h3>
             @Model.Title
         </h3>
-        <a href="/Profile/@Model.User.Id">
-            <img src="@Model.User.ProfilePicture" alt="@Model.User.Email" class="me-2" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%">
-        </a>
-        <div class="d-flex flex-column">
-            <span class="me-2 author-name">@Model.User.UserName</span>
-            <span class="author-bookmark">@(Model.User.Bookmarks?.Count ?? 0) bookmarks</span>
-        </div>
-        <br />
-        <p>
-            @Model.Description
-        </p>
+
         <div class="d-flex flex-row align-items-center p-2 mb-3">
-        
-            @if (SignInManager.IsSignedIn(User)) {
-                <div class="ml-auto d-flex flex-row align-items-center gap-2">
-                    Your rating:
-                    <select class="star-rating-user" onchange="changeRating(this)">
-                        @{
-                            var rating = Model.Reviews?.FirstOrDefault(r => r.User?.UserName == User.Identity?.Name)?.Rating ?? 0;
-                            if (rating == 0) {
-                                <option value="" disabled selected></option>
+            <a href="/Profile/@Model.User.Id">
+                <img src="@Model.User.ProfilePicture" alt="@Model.User.Email" class="me-2" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%">
+            </a>
+            <div class="d-flex flex-column">
+                <span class="me-2 author-name">@Model.User.UserName</span>
+                <span class="author-bookmark">@(Model.User.Bookmarks?.Count ?? 0) bookmarks</span>
+            </div>
+        </div>
+
+        <br/>
+        <div>
+            @Html.Raw(Model.Description)
+        </div>
+
+        @if (SignInManager.IsSignedIn(User)) {
+            <div class="ml-auto d-flex flex-row align-items-center gap-2">
+                Your rating:
+                <select class="star-rating-user" onchange="changeRating(this)">
+                    @{
+                        var rating = Model.Reviews?.FirstOrDefault(r => r.User?.UserName == User.Identity?.Name)?.Rating ?? 0;
+                        if (rating == 0) {
+                            <option value="" disabled selected></option>
+                        }
+                        for (int i = 5; i > 0; i--) {
+                            if (rating == i) {
+                                <option value="@i" selected>@i</option>
                             }
-                            for (int i = 5; i > 0; i--) {
-                                if (rating == i) {
-                                    <option value="@i" selected>@i</option>
-                                }
-                                else {
-                                    <option value="@i">@i</option>
-                                }
+                            else {
+                                <option value="@i">@i</option>
                             }
                         }
-                    </select>
-                </div>
-            }
-        </div>
+                    }
+                </select>
+            </div>
+        }
         <div class="d-flex flex-column gap-2 flex-grow-1">
             <h4 class="fw-bold">
                 @(Model.Comments?.Count ?? 0) Comments
@@ -94,8 +109,7 @@
                             <span class="fw-bold">@Model.User.UserName</span>: @comment.Content
                         </p>
                         <!-- daca userul este admin sau daca este postarea lui, sau daca nu e conectat -->
-                        @if (User.IsInRole("Admin") || User.Identity.Name == Model.User.UserName)
-                        {
+                        @if (await Html.CanEditResource(UserManager, SignInManager, comment.User)) {
                             <form action="/Bookmarks/DeleteComment/@comment.Id" method="post" class="ml-auto">
                                 <button type="submit" class="btn btn-outline-danger" style="border: none;">
                                     <i class="bi bi-trash3-fill"></i>
@@ -126,17 +140,7 @@
         </div>
     </div>
 </div>
-<br />
-<!-- daca userul este admin sau daca este postarea lui -->
-@if (User.IsInRole("Admin") || User.Identity.Name == Model.User.UserName)
-{
-    <a href="/Bookmarks/Delete/@Model.Id" class="btn btn-danger">Sterge Bookmark</a>
-}
-
-@if (User.Identity.Name == Model.User.UserName)
-{
-    <a href="/Bookmarks/Edit/@Model.Id" class="btn btn-danger">Editeaza Bookmark</a>
-}
+<br/>
 
 <h2 class="mt-5 mb-3">
     More like this
@@ -145,9 +149,7 @@
 <div class="related-bookmark-container">
 
     @foreach (var bookmark in @Model.RelatedBookmarks) {
-        @await Html.PartialAsync("_BookmarkCard", new BookmarkViewModel {
-                   Bookmark = bookmark
-               })
+        @await Html.PartialAsync("_BookmarkCard", new BookmarkViewModel() { Bookmark = bookmark })
     }
 
 </div>

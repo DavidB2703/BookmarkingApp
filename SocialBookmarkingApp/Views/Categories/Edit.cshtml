@@ -6,10 +6,10 @@
 @model SocialBookmarkingApp.Models.Category
 
 @{
-    ViewBag.Title = "Editează Categorie";
+    ViewBag.Title = "Edit Category";
 }
 
-<h2>Editează Categorie</h2>
+<h2>Edit Category</h2>
 
 @using (Html.BeginForm("Edit", "Categories", FormMethod.Post, new { @class = "form-horizontal" }))
 {
@@ -17,7 +17,7 @@
 
     <div class="form-group">
         @Html.HiddenFor(model => model.Id) <!-- Adăugăm un câmp ascuns pentru Id -->
-        @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.CategoryName, "Category Name", htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
@@ -26,7 +26,7 @@
 
     <!-- Alte câmpuri pentru alte proprietăți, dacă există -->
 
-    <div class="form-group">
+    <div class="form-group mt-2">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Salvează Modificările" class="btn btn-success" />
         </div>

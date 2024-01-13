@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Build.Framework;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -14,23 +13,23 @@ public enum MediaType {
 public class Bookmark {
     public int Id { get; set; }
 
-    [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Titlul este obligatoriu")]
+    [Required(ErrorMessage = "Titlul este obligatoriu")]
     [StringLength(100, ErrorMessage = "Titlul nu poate avea  mai mult de 100 de caractere")]
     [MinLength(5, ErrorMessage = "Titlul trebuie sa aiba maimult de 5 caractere")]    
-    public string? Title { get; set; }
+    public string Title { get; set; }
 
-   [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Continutul este obligatoriu")] 
-    public string? Description { get; set; }
+   [Required(ErrorMessage = "Continutul este obligatoriu")] 
+    public string Description { get; set; }
 
-    [System.ComponentModel.DataAnnotations.Required] public string? Link { get; set; }
-
+    public string? Link { get; set; }
    
-    [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Continutul media este obligatoriu")] 
-    public MediaType? MediaType { get; set; }
+    public MediaType MediaType { get; set; }
 
-    [System.ComponentModel.DataAnnotations.Required] public string? MediaUrl { get; set; }
+    [Required(ErrorMessage = "Continutul media este obligatoriu")] 
+    public string? MediaUrl { get; set; }
     
-    [System.ComponentModel.DataAnnotations.Required] public DateTime? Date { get; set; }
+    [Required]
+    public DateTime? Date { get; set; }
 
     public virtual ApplicationUser? User { get; set; }
 

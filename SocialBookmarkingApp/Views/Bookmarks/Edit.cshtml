@@ -1,16 +1,15 @@
 ﻿@model SocialBookmarkingApp.Models.Bookmark
 
 @{
-    ViewBag.Title = "Editează Bookmark";
+    ViewBag.Title = "Edit Bookmark";
 }
 
-<h2>Editează Bookmark</h2>
+<h2>Edit Bookmark</h2>
 
 @using (Html.BeginForm(actionName: "Edit", controllerName: "Bookmarks",
                   method: FormMethod.Post,
                   routeValues: new { id = Model.Id }))
 {
-    @Html.AntiForgeryToken()
 
 
     <div class="form-group">
@@ -25,7 +24,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = 3 })
+            @Html.TextAreaFor(model => model.Description, new { @class = "summernote" })
             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
         </div>
     </div>

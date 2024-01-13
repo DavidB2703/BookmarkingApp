@@ -1,17 +1,19 @@
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.Build.Framework;
 
 namespace SocialBookmarkingApp.Models; 
 
 public class BookmarkCreate {
     public int Id { get; set; }
 
-    [Required] public string? Title { get; set; }
+    [Required(ErrorMessage = "Title is required")] 
+    public string Title { get; set; }
 
-    [Required] public string? Description { get; set; }
+    [Required(ErrorMessage = "Description is required")] 
+    public string Description { get; set; }
 
-    [Required] public string? Link { get; set; }
+    public string? Link { get; set; }
 
     public IFormFile? Media { get; set; }
 

@@ -4,20 +4,27 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle">Save Bookmark</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title">Save Bookmark</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     @Html.AntiForgeryToken()
 
                     <input type="hidden" name="BookmarkId" value="@Model.BookmarkId"/>
                     @Html.DropDownListFor(m => m.CategoryId, new SelectList(Model.Categories, "Value", "Text"), "Select a category", new { @class = "form-control" })
+                    
+                    <div class="text-center my-2">
+                        or
+                    </div>
+                    
+                    <a class="btn-primary btn d-block" asp-controller="Categories" asp-action="New">
+                        Add Category
+                        <i class="bi bi-plus"></i>
+                    </a>
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <input type="submit" class="btn btn-primary" value="Save"/>
                 </div>
             </div>

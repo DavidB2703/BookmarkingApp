@@ -37,65 +37,47 @@ namespace SocialBookmarkingApp.Controllers
                 await db.SaveChangesAsync();
 
                 // Redirectare către o altă acțiune sau o pagină
-                return RedirectToAction("Index", "Bookmarks");
+                TempData["successMessage"] = "Category added successfully!";
+                return RedirectToAction("Saved", "Bookmarks");
             }
 
             // Dacă modelul nu este valid, revenim la formularul de adăugare cu erori
-            return View("AdaugaCategorie", category);
+            return View("New", category);
         }
-
-        [Authorize(Roles = "User,Admin")]
-        public async Task<IActionResult> Show()
-        {
-            var user = await _userManager.GetUserAsync(User);
-            
-            ViewBag.categories = _categories.Where(c => c.User == user).ToList();
-            return View();
-        }
-
         //adaugam o metoda care sterge o categorie
-        [HttpPost]
+        [HttpPost("[controller]/[action]/{id:int}")]
         [Authorize(Roles = "User,Admin")]
-        public IActionResult Delete(int? id)
+        public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var category = db.Categories.Find(id);
+            var category = await db.Categories.FindAsync(id);
             if (category == null)
             {
-                return NotFound();
+                TempData["errorMessage"] = "Category not found!";
+                return RedirectToAction("Saved", "Bookmarks");
             }
             db.Categories.Remove(category);
-            db.SaveChanges();
-            return RedirectToAction("Show", "Categories");
+            await db.SaveChangesAsync();
+            TempData["successMessage"] = "Category deleted successfully!";
+            return RedirectToAction("Saved", "Bookmarks");
         }
 
         //adaugam o metoda care editeaza o categorie
-        public IActionResult Edit(int? id)
+        [HttpGet("[controller]/[action]/{id:int}")]
+        public async Task<IActionResult> Edit([FromRoute] int id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-            var category = db.Categories.Find(id);
-            if (category == null)
-            {
-                return NotFound();
-            }
-            return View(category);
+            var category = await db.Categories.FindAsync(id);
+            if (category != null) return View(category);
+            TempData["errorMessage"] = "Category not found!";
+            return RedirectToAction("Saved", "Bookmarks");
         }
         [HttpPost]
-        public IActionResult Edit(Category category)
+        public async Task<IActionResult> Edit([FromForm] Category category)
         {
-            if (ModelState.IsValid)
-            {
-                db.Categories.Update(category);
-                db.SaveChanges();
-                return RedirectToAction("Show", "Categories");
-            }
-            return View(category);
+            if (!ModelState.IsValid) return View(category);
+            db.Categories.Update(category);
+            await db.SaveChangesAsync();
+            TempData["successMessage"] = "Category updated successfully!";
+            return RedirectToAction("Saved", "Bookmarks");
         }
 
 

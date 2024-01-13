@@ -49,10 +49,5 @@ namespace SocialBookmarkingApp.Controllers
             }
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
-
     }
 }

@@ -2,6 +2,16 @@
 
 <a href="/Bookmarks/Show/@Model.Bookmark.Id">
     <div class="card bookmark border-0">
+        @if (Model.InCategory != null) {
+            <form class="position-absolute"
+                  style="right: 15px; top: 15px; z-index: 10"
+                  action="/Bookmarks/Remove/@Model.Bookmark.Id/@Model.InCategory.Id/" 
+                  method="post">
+            <button class="btn btn-danger" type="submit">
+                <i class="bi bi-folder-x"></i>
+            </button>
+            </form>
+        }
         @if (Model.Bookmark.MediaType is MediaType.LocalImage or MediaType.EmbeddedImage) {
             <img class="card-img-top" src="@Model.Bookmark.MediaUrl" alt="Bookmark Image">
         }
