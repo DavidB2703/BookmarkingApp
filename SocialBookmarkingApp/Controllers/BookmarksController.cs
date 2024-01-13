@@ -422,12 +422,20 @@ public class BookmarksController : Controller {
 
     [NonAction]
     public async Task<List<Bookmark>> GetRelatedBookmarks(Bookmark bookmark) {
-        var relatedBookmarks = await _bookmarks
-            .Include(b => b.User)
-            .Include(b => b.Comments)
-            .Where(b => b.User == bookmark.User && b.Id != bookmark.Id)
+        var categories = _context.Categories
+            .Include(c => c.Bookmarks)
+            .ThenInclude(b => b.User)
+            .Where(c => c.Bookmarks.Contains(bookmark));
+        // Flatten bookmarks of the categories
+        var relatedBookmarks = await categories.SelectMany(c => c.Bookmarks)
+            .Where(b => b.Id != bookmark.Id)
             .ToListAsync();
-        return relatedBookmarks;
+        // var relatedBookmarks = await _bookmarks
+        //     .Include(b => b.User)
+        //     .Include(b => b.Comments)
+        //     .Where(b => b.User == bookmark.User && b.Id != bookmark.Id)
+        //     .ToListAsync();
+        return relatedBookmarks.DistinctBy(b => b.Id).ToList();
     }
 
     [Authorize(Roles = "User,Admin")]
