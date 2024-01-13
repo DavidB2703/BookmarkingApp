@@ -84,7 +84,7 @@ public class BookmarksController : Controller {
         // Union queries
         var matchedBookmarks = matchedQueries.Aggregate((current, next) => current.Union(next));
 
-        return matchedBookmarks;
+        return matchedBookmarks.OrderBy(b => b.Title);
     }
 
     [NonAction]
@@ -107,11 +107,8 @@ public class BookmarksController : Controller {
         IQueryable<string> categories = _context.Categories
             .Where(c => c.User == user)
             .Select(c => c.CategoryName ?? "");
-        if (!string.IsNullOrEmpty(search)) {
-            query = SearchBookmarks(query, search, categories);
-        }
+        query = !string.IsNullOrEmpty(search) ? SearchBookmarks(query, search, categories) : OrderBookmarks(query);
 
-        query = OrderBookmarks(query);
         var count = query.Count();
         if (listView) {
             query = query.Skip((page - 1) * pageSize).Take(pageSize);
@@ -193,12 +190,14 @@ public class BookmarksController : Controller {
             model.MediaType = mediaType;
             var uri = new Uri(Path.Combine(UploadFolder, fileName), UriKind.Relative);
             model.MediaUrl = "/" + uri;
-        } else if(bookmark.MediaUrl != null) {
+        }
+        else if (bookmark.MediaUrl != null) {
             var url = new Url(bookmark.MediaUrl);
             if (url.IsInvalid) {
                 TempData["errorMessage"] = "Invalid URL";
                 return View(bookmark);
             }
+
             var extention = Path.GetExtension(url.Path);
             MediaType mediaType;
             switch (extention) {
@@ -216,9 +215,11 @@ public class BookmarksController : Controller {
                     TempData["errorMessage"] = "Invalid File Type";
                     return View(bookmark);
             }
+
             model.MediaType = mediaType;
             model.MediaUrl = bookmark.MediaUrl;
-        } else {
+        }
+        else {
             TempData["errorMessage"] = "Image/Video is required";
             return View(bookmark);
         }
@@ -278,7 +279,7 @@ public class BookmarksController : Controller {
             TempData["message"] = "Articolul a fost modificat";
             TempData["messageType"] = "alert-success";
             _context.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Show", "Bookmarks", new { id = bookmark.Id });
         }
         else {
             if(bookmark != null)
@@ -305,24 +306,20 @@ public class BookmarksController : Controller {
     [HttpPost]
     [Authorize(Roles = "User,Admin")]
     public async Task<IActionResult> NewComment([FromForm] Comment comment) {
-        if (ModelState.IsValid) {
-            comment.Date = DateTime.UtcNow;
-            comment.User = await _userManager.GetUserAsync(HttpContext.User);
-            _comments.Add(comment);
-            await _context.SaveChangesAsync();
+        if (!ModelState.IsValid) {
+            // Get validation errors
+            var errors = ModelState.Values.SelectMany(v => v.Errors);
+            // Convert errors to string
+            var errorMessage = errors.Aggregate("", (current, error) => current + (error.ErrorMessage + "\n"));
+            TempData["errorMessage"] = errorMessage;
             return RedirectToAction("Show", "Bookmarks", new { id = comment.BookmarkId });
         }
 
-        else {
-            var bookmark = _bookmarks
-                .Include("Category")
-                .Include("User")
-                .Include("Comments")
-                .Include("Comments.User")
-                .First(art => art.Id == comment.BookmarkId);
-
-            return RedirectToAction("Show", bookmark);
-        }
+        comment.Date = DateTime.UtcNow;
+        comment.User = await _userManager.GetUserAsync(HttpContext.User);
+        _comments.Add(comment);
+        await _context.SaveChangesAsync();
+        return RedirectToAction("Show", "Bookmarks", new { id = comment.BookmarkId });
     }
 
     [HttpPost]
@@ -333,6 +330,7 @@ public class BookmarksController : Controller {
             TempData["errorMessage"] = "Comment not found";
             return RedirectToAction("Index");
         }
+
         // Check if user is owner of comment
         var user = await _userManager.GetUserAsync(HttpContext.User);
         if (comment.User != user && !await _userManager.IsInRoleAsync(user, "Admin")) {
@@ -478,6 +476,7 @@ public class BookmarksController : Controller {
             category.Bookmarks.Add(bookmark);
             await _context.SaveChangesAsync();
         }
+
         TempData["successMessage"] = "Bookmark saved successfully!";
 
         return RedirectToAction("Saved", "Bookmarks");
@@ -532,6 +531,5 @@ public class BookmarksController : Controller {
         if (user != null) return View(user);
         TempData["errorMessage"] = "User not found";
         return RedirectToAction("Index", "Bookmarks");
-
     }
 }

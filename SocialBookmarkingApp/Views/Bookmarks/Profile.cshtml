@@ -2,7 +2,7 @@
 
 <div class="d-flex flex-row justify-content-center align-items-center p-5">
     <div>
-        <img src="@Model.ProfilePicture" class="rounded-circle" style="width: 100px; height: 100px;" alt="@Model.UserName"/>
+        <img src="@Html.ProfilePicture(Model)" class="rounded-circle" style="width: 100px; height: 100px;" alt="@Model.UserName"/>
     </div>
     <div>
         <p class="ms-3 fs-3 fw-bold mb-0">@Model.FullName</p>

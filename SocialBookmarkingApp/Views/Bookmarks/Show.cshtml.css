@@ -16,8 +16,6 @@
 
 .media-overlay>img{
     width: 100%;
-    height: 100%;
-    object-fit: cover;
 }
 
 .author-name{
@@ -26,4 +24,15 @@
 
 .comment-bar{
     height: 100px;
+}
+
+.bookmark-info{
+    @media screen and (min-width: 768px) {
+        width: 50%;
+        max-height: 1000px;
+    }
+}
+
+.comment-section{
+    min-height: 0;
 }

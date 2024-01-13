@@ -29,15 +29,15 @@ namespace SocialBookmarkingApp.Controllers
         // Se poate edita comentariul doar de catre userii cu rolul Admin
         // sau de catre userii cu rolul User sau Editor doar daca comentariul 
         // a fost lasat de acestia
-       // [Authorize(Roles = "User,Editor,Admin")]
-        public IActionResult Edit(int id)
+       [Authorize(Roles = "User,Admin")]
+       [HttpGet("[controller]/[action]/{id:int}")] // "Comments/Edit/1
+        public IActionResult Edit([FromRoute] int id)
         {
             Comment comm = db.Comments.Find(id);
             return View(comm);
         }
 
         [HttpPost]
-
         public IActionResult Edit(int id, Comment requestComment)
         {
             Comment comm = db.Comments.Find(id);

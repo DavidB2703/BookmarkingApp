@@ -6,14 +6,14 @@
 
 <h2>Editează Comentariu</h2>
 
-<form asp-controller="Comments" asp-action="Edit" method="post">
+@using (Html.BeginForm(actionName: "Edit", controllerName: "Comments", method: FormMethod.Post, routeValues: new { id = Model.Id })) {
     <div class="form-group">
         <label asp-for="Content">Text Comentariu:</label>
-        <textarea asp-for="Content" class="form-control"></textarea>
+        @Html.TextAreaFor(model => model.Content, new { @class = "form-control" } )
         <span asp-validation-for="Content" class="text-danger"></span>
     </div>
 
-    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="Id"/>
 
-    <button type="submit" class="btn btn-primary">Salvează modificările</button>
-</form>
+    <button type="submit" class="btn btn-primary mt-3">Salvează modificările</button>
+}

@@ -19,7 +19,7 @@ public class Bookmark {
     public string Title { get; set; }
 
    [Required(ErrorMessage = "Descrierea este obligatorie")]
-   [StringLength(2000, ErrorMessage = "Descrierea nu poate avea mai mult de 2000 de caractere")]
+   [StringLength(10000, ErrorMessage = "Descrierea nu poate avea mai mult de 10000 de caractere")]
     public string Description { get; set; }
 
     public string? Link { get; set; }

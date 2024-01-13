@@ -46,4 +46,8 @@ public static class HtmlHelperExtensions
         if (user == null || !signInManager.IsSignedIn(htmlHelper.ViewContext.HttpContext.User)) return false;
         return user.Id == owner.Id || (await userManager.IsInRoleAsync(user, "Admin"));
     }
+    
+    public static string ProfilePicture(this IHtmlHelper htmlHelper, ApplicationUser? user) {
+        return user?.ProfilePicture ?? "/images/default.jpeg";
+    }
 }
