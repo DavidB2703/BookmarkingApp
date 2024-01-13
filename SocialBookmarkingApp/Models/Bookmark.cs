@@ -18,7 +18,8 @@ public class Bookmark {
     [MinLength(5, ErrorMessage = "Titlul trebuie sa aiba maimult de 5 caractere")]    
     public string Title { get; set; }
 
-   [Required(ErrorMessage = "Continutul este obligatoriu")] 
+   [Required(ErrorMessage = "Descrierea este obligatorie")]
+   [StringLength(2000, ErrorMessage = "Descrierea nu poate avea mai mult de 2000 de caractere")]
     public string Description { get; set; }
 
     public string? Link { get; set; }

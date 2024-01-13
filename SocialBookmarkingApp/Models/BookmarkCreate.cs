@@ -7,10 +7,13 @@ namespace SocialBookmarkingApp.Models;
 public class BookmarkCreate {
     public int Id { get; set; }
 
-    [Required(ErrorMessage = "Title is required")] 
+    [Required(ErrorMessage = "Titlul este obligatoriu")]
+    [StringLength(100, ErrorMessage = "Titlul nu poate avea  mai mult de 100 de caractere")]
+    [MinLength(5, ErrorMessage = "Titlul trebuie sa aiba maimult de 5 caractere")]
     public string Title { get; set; }
 
-    [Required(ErrorMessage = "Description is required")] 
+    [Required(ErrorMessage = "Description is required")]
+    [StringLength(2000, ErrorMessage = "Descrierea nu poate avea mai mult de 2000 de caractere")]
     public string Description { get; set; }
 
     public string? Link { get; set; }

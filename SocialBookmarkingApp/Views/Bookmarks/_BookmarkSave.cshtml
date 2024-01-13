@@ -11,6 +11,7 @@
                     @Html.AntiForgeryToken()
 
                     <input type="hidden" name="BookmarkId" value="@Model.BookmarkId"/>
+
                     @Html.DropDownListFor(m => m.CategoryId, new SelectList(Model.Categories, "Value", "Text"), "Select a category", new { @class = "form-control" })
                     
                     <div class="text-center my-2">

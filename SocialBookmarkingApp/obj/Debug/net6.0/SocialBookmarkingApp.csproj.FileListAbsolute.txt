@@ -869,3 +869,7 @@ C:\Users\david\Source\Repos\DavidB2703\BookmarkingApp\SocialBookmarkingApp\obj\D
 C:\Users\david\Source\Repos\DavidB2703\BookmarkingApp\SocialBookmarkingApp\obj\Debug\net6.0\ref\SocialBookmarkingApp.dll
 C:\Users\david\Source\Repos\DavidB2703\BookmarkingApp\SocialBookmarkingApp\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\david\Source\Repos\DavidB2703\BookmarkingApp\SocialBookmarkingApp\obj\Debug\net6.0\scopedcss\Views\Bookmarks\_BookmarkList.cshtml.rz.scp.css
+C:\Users\david\Source\Repos\DavidB2703\BookmarkingApp\SocialBookmarkingApp\bin\Debug\net6.0\AngleSharp.dll
+C:\Users\david\Source\Repos\DavidB2703\BookmarkingApp\SocialBookmarkingApp\bin\Debug\net6.0\AngleSharp.Css.dll
+C:\Users\david\Source\Repos\DavidB2703\BookmarkingApp\SocialBookmarkingApp\bin\Debug\net6.0\HtmlSanitizer.dll
+C:\Users\david\Source\Repos\DavidB2703\BookmarkingApp\SocialBookmarkingApp\bin\Debug\net6.0\System.Collections.Immutable.dll

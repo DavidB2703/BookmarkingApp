@@ -135,7 +135,7 @@ public class BookmarksController : Controller {
     public IActionResult New() {
         var bookmark = new BookmarkCreate();
         //Luam toate categoriile din baza de date
-        // bookmark.Categ = GetAllCategories();
+        //bookmark.Categ = GetAllCategories();
         //Returnam view-ul New cu un obiect de tip Bookmark
         return View(bookmark);
     }
@@ -152,7 +152,7 @@ public class BookmarksController : Controller {
             Description = sanitizer.Sanitize(bookmark.Description),
             Link = bookmark.Link,
             Date = DateTime.UtcNow,
-            User = user
+            User = user,
         };
         if (bookmark.Media != null) {
             // Save image to wwwroot/uploads
@@ -268,11 +268,11 @@ public class BookmarksController : Controller {
 
     [Authorize(Roles = "User,Admin")]
     [HttpPost]
-    public IActionResult Edit(int id, Bookmark requestBookmark) {
+    public async Task<IActionResult> Edit(int id, Bookmark requestBookmark) {
         Bookmark bookmark = _bookmarks.Find(id);
 
 
-        if (true) { //nu merge cu ModelState.IsValid
+        if (ModelState.IsValid) {  
             bookmark.Title = requestBookmark.Title;
             bookmark.Description = requestBookmark.Description;
             TempData["message"] = "Articolul a fost modificat";
@@ -281,7 +281,8 @@ public class BookmarksController : Controller {
             return RedirectToAction("Index");
         }
         else {
-            // requestBookmark.Categ = GetAllCategories();
+            if(bookmark != null)
+                requestBookmark.Categ = await GetAllCategories(bookmark);
             return View(requestBookmark);
         }
     }
@@ -297,7 +298,7 @@ public class BookmarksController : Controller {
             .First(art => art.Id == id);
         bookmark.RelatedBookmarks = await GetRelatedBookmarks(bookmark);
         // Get available categories for current user (bookmark is not saved in these categories)
-        bookmark.Categ = await GetAllCategories();
+        bookmark.Categ = await GetAllCategories(bookmark);
         return View(bookmark);
     }
 
@@ -392,7 +393,7 @@ public class BookmarksController : Controller {
     }
 
     [Authorize(Roles = "User,Admin")]
-    public async Task<IEnumerable<SelectListItem>> GetAllCategories() {
+    public async Task<IEnumerable<SelectListItem>> GetAllCategories(Bookmark bookmark) {
         // generam o lista de tipul SelectListItem fara elemente
         var selectList = new List<SelectListItem>();
 
@@ -400,13 +401,18 @@ public class BookmarksController : Controller {
         // extragem toate categoriile din baza de date
         var categories = await _context.Categories
             .Where(c => c.User == user)
+            .Where(c => !c.Bookmarks.Contains(bookmark))
             .ToListAsync();
+
 
         // iteram prin categorii
         foreach (var category in categories) {
             // adaugam in lista elementele necesare pentru dropdown
             // id-ul categoriei si denumirea acesteia
-            selectList.Add(new SelectListItem {
+            
+            //adaugam doar daca bookmark-ul nu este salvat in acea categorie
+            selectList.Add(new SelectListItem
+            {
                 Value = category.Id.ToString(),
                 Text = category.CategoryName.ToString()
             });

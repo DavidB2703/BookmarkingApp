@@ -104,9 +104,9 @@
             <div>
                 @foreach (SocialBookmarkingApp.Models.Comment comment in @Model.Comments ?? new List<SocialBookmarkingApp.Models.Comment>()) {
                     <div class="d-flex flex-row">
-                        <img src="@Model.User.ProfilePicture" alt="@Model.User.Email" class="me-2" style="width: 30px; height: 30px; object-fit: cover; border-radius: 50%">
+                        <img src="@comment.User.ProfilePicture" alt="@comment.User.Email" class="me-2" style="width: 30px; height: 30px; object-fit: cover; border-radius: 50%">
                         <p>
-                            <span class="fw-bold">@Model.User.UserName</span>: @comment.Content
+                            <span class="fw-bold">@comment.User.UserName</span>: @comment.Content
                         </p>
                         <!-- daca userul este admin sau daca este postarea lui, sau daca nu e conectat -->
                         @if (await Html.CanEditResource(UserManager, SignInManager, comment.User)) {
@@ -141,20 +141,26 @@
     </div>
 </div>
 <br/>
+@* Daca mai exista postari ale userului curent *@
+@if (Model.User.Bookmarks?.Count > 1) 
+{
 
-<h2 class="mt-5 mb-3">
-    More like this
-</h2>
+    <h2 class="mt-5 mb-3">
+        More like this
+    </h2>
 
-<div class="related-bookmark-container">
+    <div class="related-bookmark-container">
 
-    @foreach (var bookmark in @Model.RelatedBookmarks) {
-        @await Html.PartialAsync("_BookmarkCard", new BookmarkViewModel() { Bookmark = bookmark })
-    }
+        @foreach (var bookmark in @Model.RelatedBookmarks)
+        {
+            @await Html.PartialAsync("_BookmarkCard", new BookmarkViewModel() { Bookmark = bookmark })
+        }
 
-</div>
+    </div>
 
-<partial name="_BookmarkSave" model="@(new BookmarkSaveModel() { Categories = Model.Categ, BookmarkId = Model.Id })"/>
+}
+
+<partial name="_BookmarkSave" model="@(new BookmarkSaveModel() { Categories = Model.Categ, BookmarkId = Model.Id })" />
 
 @section Scripts {
     <script>

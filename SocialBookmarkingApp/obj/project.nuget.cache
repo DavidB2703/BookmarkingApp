@@ -1,9 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "pBKJbLd7GPLP014EV4JW8gemhw8GZbU7dZcwN4tbo/oB8A8wUqaDsh4iOvvKjpXXY+u3mf4/jwbfLodKjzcwPQ==",
+  "dgSpecHash": "a1Qr8TTZTeBBm1p3O8xMc2sAOcu0vhnmGZReFrSktbN4I3/+Z6C1jgaT8Dnw5kXhx+wx6Anfd52NWaadiQldMg==",
   "success": true,
   "projectFilePath": "C:\\Users\\david\\Source\\Repos\\DavidB2703\\BookmarkingApp\\SocialBookmarkingApp\\SocialBookmarkingApp.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\david\\.nuget\\packages\\anglesharp\\0.17.1\\anglesharp.0.17.1.nupkg.sha512",
+    "C:\\Users\\david\\.nuget\\packages\\anglesharp.css\\0.17.0\\anglesharp.css.0.17.0.nupkg.sha512",
+    "C:\\Users\\david\\.nuget\\packages\\htmlsanitizer\\8.0.811\\htmlsanitizer.8.0.811.nupkg.sha512",
     "C:\\Users\\david\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\david\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\david\\.nuget\\packages\\humanizer.core.af\\2.14.1\\humanizer.core.af.2.14.1.nupkg.sha512",
@@ -162,7 +165,7 @@
     "C:\\Users\\david\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\david\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
     "C:\\Users\\david\\.nuget\\packages\\system.collections.concurrent\\4.3.0\\system.collections.concurrent.4.3.0.nupkg.sha512",
-    "C:\\Users\\david\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
+    "C:\\Users\\david\\.nuget\\packages\\system.collections.immutable\\8.0.0\\system.collections.immutable.8.0.0.nupkg.sha512",
     "C:\\Users\\david\\.nuget\\packages\\system.composition\\1.0.31\\system.composition.1.0.31.nupkg.sha512",
     "C:\\Users\\david\\.nuget\\packages\\system.composition.attributedmodel\\1.0.31\\system.composition.attributedmodel.1.0.31.nupkg.sha512",
     "C:\\Users\\david\\.nuget\\packages\\system.composition.convention\\1.0.31\\system.composition.convention.1.0.31.nupkg.sha512",
